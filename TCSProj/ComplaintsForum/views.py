@@ -11,7 +11,7 @@ def complaint_new(request):
             data = form.save(commit=False)
             # data.username = request.session.get('username')
             data.save()
-            return redirect(request, 'done.html')
+            return render(request, 'done.html')
     else:
         form = ComplaintForm()
     return render(request, 'complaint_new.html', {'form': form})
