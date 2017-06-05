@@ -1,5 +1,6 @@
 from django.apps import AppConfig
+from __future__ import unicode_literals
 
 
-class ComplaintsforumConfig(AppConfig):
+class ComplaintsForumConfig(AppConfig):
     name = 'ComplaintsForum'
