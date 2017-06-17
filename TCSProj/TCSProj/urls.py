@@ -16,10 +16,12 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
-from ComplaintsForum import views
+from ComplaintsForum.views import complaint_new
+from Services.views import sla_new
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^complaint_new/$', views.complaint_new, name='complaint_new'),
+    url(r'^complaint_new/$', complaint_new, name='complaint_new'),
+    url(r'^sla_new/$', sla_new, name='sla_new'),
 ]

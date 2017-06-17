@@ -47,7 +47,7 @@ class SLA(models.Model):
     min_duration = models.ForeignKey(Service, on_delete=models.CASCADE)
     service_id= models.ForeignKey(Service, on_delete=models.CASCADE)
     company_name=models.ForeignKey(Company, on_delete=models.CASCADE)
-    vendor=models.ForeignKey(Company, on_delete=models.CASCADE)
+   # vendor=models.ForeignKey(Company, on_delete=models.CASCADE)
     point_of_contact=models.CharField(max_length=50)
     client_name=models.ForeignKey(Client, on_delete=models.CASCADE)
     service_date = models.DateField()
