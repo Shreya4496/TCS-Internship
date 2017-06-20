@@ -1,0 +1,131 @@
+{% load staticfiles %}
+
+<html>
+
+<head>
+    <title>ChatBox</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'chat.css' %}">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+
+
+<style> 
+input[type=text] {
+    width: 80%;
+    /*padding: 12px 20px;*/
+    border: 1px solid black;
+}
+</style>
+
+
+
+
+
+
+</head>
+
+<body>
+
+<li  class="nav navbar-nav navbar-right">
+<a href = "{% url 'logout' %}">
+<span class="glyphicon glyphicon-off" aria-hidden="true"><font size="5" >Logout</font></span>&nbsp;
+&nbsp;&nbsp;&nbsp;
+</a>
+</li>
+
+ <div class="container">
+                <div class="col-lg-5 col-xs-12 col-centered">
+
+
+
+    <div id="chat-body" class="panel panel-default">
+        <div id="msg-list-div" class="panel-body">
+            <ul id="msg-list" class="list-group">
+
+
+
+{%if not request.user.is_superuser%}
+    <li class="text-left list-group-item">May I help you? </li>
+
+
+{% for obj in chat %}
+    {% if obj.user == request.user %}
+        <li class="text-right list-group-item">{{ obj.message }}</li>
+    {% elif obj.user.is_superuser %}
+        <li class="text-left list-group-item">{{ obj.message }}</li>
+    {% endif %}
+{% endfor %}
+    
+
+
+{%else%}
+
+{% for obj in chat %}
+        {% if obj.user == request.user %}
+        <li class="text-right list-group-item">{{ obj.message }}</li>
+        {% else %}
+        <li class="text-left list-group-item">{{ obj.message }}</li>
+         {% endif %}
+   
+{% endfor %}
+
+{%endif%}
+
+
+
+
+
+
+
+            {%comment%}
+                {% for obj in chat %}
+                    {% if obj.user == request.user %}
+                        <li class="text-right list-group-item">{{ obj.message }}</li>
+                      {% elif obj.user.is_superuser %}
+                        <li class="text-left list-group-item">{{ obj.message }}</li> 
+                    {% endif %}
+                {% endfor %}
+                
+            {%endcomment%}
+
+                <script>
+                    var chatlist = document.getElementById('msg-list-div');
+                    chatlist.scrollTop = chatlist.scrollHeight;
+                </script>
+            
+
+
+
+      </ul>
+     
+ 
+
+    <form id="chat-form" method="post" action="/post/">
+        <div id="chat-bottom" class="input-group">
+
+            <input type="text" id="chat-msg" name="chat-msg" class="form-control" size="40" >
+            <input class="btn btn-default" id="send" type="submit" value="Send">
+        </div>
+    </form>
+     
+
+
+</div>
+</div>
+</div>
+</div>      
+
+
+
+</body>
+
+<script src="{% static 'chat.js' %}"></script>
+</html>

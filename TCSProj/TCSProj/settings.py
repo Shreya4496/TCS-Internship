@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'LeadGeneration',
     'Login',
     'Services',
+    'ChatBox',
 ]
 
 MIDDLEWARE_CLASSES = [
