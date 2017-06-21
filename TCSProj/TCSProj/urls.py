@@ -18,7 +18,8 @@ from django.conf.urls import url
 from django.contrib import admin
 from ComplaintsForum.views import complaint_new
 from Services.views import sla_new
-from ChatBox.views import Login,Logout,Home,Post,Messages
+from ChatBox.views import Login,Logout,Home,Post,Messages,register
+
 
 
 urlpatterns = [
@@ -30,4 +31,5 @@ urlpatterns = [
     url(r'^home/$', Home, name='home'),
     url(r'^post/$', Post, name='post'),
     url(r'^messages/$',Messages, name='messages'),
+    url(r'^register/$', register , name='register'),
 ]
