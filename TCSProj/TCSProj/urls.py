@@ -18,10 +18,16 @@ from django.conf.urls import url
 from django.contrib import admin
 from ComplaintsForum.views import complaint_new
 from Services.views import sla_new
+from ChatBox.views import Login,Logout,Home,Post,Messages
 
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^complaint_new/$', complaint_new, name='complaint_new'),
     url(r'^sla_new/$', sla_new, name='sla_new'),
+    url(r'^login/$', Login, name='login'),
+    url(r'^logout/$',Logout, name='logout'),
+    url(r'^home/$', Home, name='home'),
+    url(r'^post/$', Post, name='post'),
+    url(r'^messages/$',Messages, name='messages'),
 ]

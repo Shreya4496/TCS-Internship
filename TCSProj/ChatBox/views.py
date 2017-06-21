@@ -1,9 +1,10 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from chat_app import settings
+from TCSProj import settings
 
-from .models import Chat
+
+from ComplaintsForum.models import Chat
 
 def Login(request):
     next = request.GET.get('next', '/home/')
