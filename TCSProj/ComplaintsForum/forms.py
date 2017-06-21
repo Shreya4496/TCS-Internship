@@ -11,7 +11,7 @@ class ComplaintForm(forms.ModelForm):
         widgets = {
             'complaint_description': forms.Textarea(attrs={'cols': 80, 'rows': 20}),
         }
-       # print fields
+        print (""+fields)
         # print("jaclin")
 
         def __init__(self):

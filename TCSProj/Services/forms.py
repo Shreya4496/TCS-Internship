@@ -7,6 +7,7 @@ class SLAForm(forms.ModelForm):
     class Meta:
         model = SLA
         fields = '__all__'
+        print ("" + fields)
 
         def __init__(self):
             self.fields['service_name'].label = "Service Name"
