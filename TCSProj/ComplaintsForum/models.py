@@ -1,5 +1,6 @@
 from django.db import models
 # from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -25,6 +26,7 @@ class Company(models.Model):
 
 
 class Service(models.Model):
+     service_id=models.CharField(max_length=50)
      service_name=models.CharField(max_length=50)
      min_duration=models.CharField(max_length=50)
      offering_company=models.ForeignKey(Company, on_delete=models.CASCADE)
@@ -42,10 +44,11 @@ class Client(models.Model):
 
     def __unicode__(self):  # __str__ for Python 3, __unicode__ for Python 2
         return self.client_name
+
 class SLA(models.Model):
-    service_name = models.ForeignKey(Service, on_delete=models.CASCADE)
-    min_duration = models.ForeignKey(Service, on_delete=models.CASCADE)
-    service_id= models.ForeignKey(Service, on_delete=models.CASCADE)
+    service_name = models.ForeignKey(Service, related_name="sla_service_name", on_delete=models.CASCADE)
+    min_duration = models.ForeignKey(Service, related_name="sla_min_duration", on_delete=models.CASCADE)
+    service_id = models.ForeignKey(Service, on_delete=models.CASCADE)
     company_name=models.ForeignKey(Company, on_delete=models.CASCADE)
    # vendor=models.ForeignKey(Company, on_delete=models.CASCADE)
     point_of_contact=models.CharField(max_length=50)
@@ -64,7 +67,6 @@ class SLA(models.Model):
 
 
 
-from django.contrib.auth.models import User
 
 class Chat(models.Model):
     #created = models.DateTimeField(auto_now_add=True)

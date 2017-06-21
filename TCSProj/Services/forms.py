@@ -1,5 +1,5 @@
 from django import forms
-from ComplaintsForum.forms import Service,Company,SLA,Client
+from ComplaintsForum.models import Service, Company, SLA, Client
 from django.forms import ModelForm, Textarea
 
 class SLAForm(forms.ModelForm):
