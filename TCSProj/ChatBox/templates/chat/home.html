@@ -8,17 +8,10 @@
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'chat.css' %}">
 
-    <!-- jQuery library -->
-
-    <!-- Latest compiled JavaScript -->
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-
-
-
-
 <style> 
 input[type=text] {
     width: 80%;
@@ -27,39 +20,35 @@ input[type=text] {
 }
 </style>
 
-
-
-
-
-
 </head>
 
 <body>
 
 
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="{% url 'home' %}" class="home_button">
-        <span class="glyphicon glyphicon-home" data-toggle="tooltip" data-placement="bottom" title="Home"><font size="5" >Home</font></span>
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="{% url 'home' %}" >
+        <span class="glyphicon glyphicon-home" data-toggle="tooltip" data-placement="tooltip" title="Home"><font size="5" >Home</font></span>
     </a>
 
 
 {%if not user.is_authenticated %}
 
 <li  class="nav navbar-nav navbar-right">
-<a href = "{% url 'register' %}">
-<span class="glyphicon glyphicon-off" aria-hidden="true" ><font size="5" >Register</font></span>&nbsp;
+
+<a href = "{% url 'register' %}"><span class="glyphicon glyphicon-off" data-toggle="tooltip" data-placement="bottom" ><font size="5" >Register</font></span></a>&nbsp;
 &nbsp;&nbsp;&nbsp;
-</a>
+
 </li>
 
 <li  class="nav navbar-nav navbar-right">
-<a href = "{% url 'login' %}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<span class="glyphicon glyphicon-off" aria-hidden="true"><font size="5" >LogIn</font></span>&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href = "{% url 'login' %}"><span class="glyphicon glyphicon-off" data-toggle="tooltip" data-placement="bottom" ><font size="5" >LogIn</font></span></a>&nbsp;
 &nbsp;&nbsp;&nbsp;
-</a>
+
 </li>
 
 {% block login %}
 {%endblock%}
+
 
 {%block Register%}
 {%endblock%}
@@ -77,11 +66,10 @@ input[type=text] {
 
 {%if user.is_authenticated%}
 <li  class="nav navbar-nav navbar-right">
-<a href = "{% url 'logout' %}">
-<span class="glyphicon glyphicon-off" aria-hidden="true"><font size="5" >Logout</font></span>&nbsp;
-&nbsp;&nbsp;&nbsp;
-</a>
+<a href = "{% url 'logout' %}"><span class="glyphicon glyphicon-off" ata-toggle="tooltip" data-placement="bottom"><font size="5" >Logout</font></span>&nbsp;
+&nbsp;&nbsp;&nbsp;</a>
 </li>
+
 
 
  <div class="container">
@@ -121,12 +109,6 @@ input[type=text] {
 {% endfor %}
 
 {%endif%}
-
-
-
-
-
-
 
             {%comment%}
                 {% for obj in chat %}

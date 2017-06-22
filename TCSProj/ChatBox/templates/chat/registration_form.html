@@ -1,32 +1,50 @@
 {% extends 'chat/home.html' %}
-{%block title%}Register{%endblock%}
+{%load staticfiles %}
 
 {%block Register%}
-<div class="container-fluid">
-<div class="row">
-<div class="col-sm-12-col-md-7">
-<div class ="panel panel-default">
-<div class="panel-body">
-<h3>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Add new account </h3>
+
+<head>
+    <meta charset="utf-8" >
+    <title>Register</title>
+
+  
+    <link rel="stylesheet" type="text/css" href ="{% static 'chat/login.css'%}" />
+    <style type="text/css">
+    	input{
+			width: 100%;
+    	}
+        label{
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+
 {%if error_message%}
 <p><strong>{{error_message}}</strong></p>
 {%endif%}
 
 
-<form method="POST" class="form-horizontal" role="form" action="" enctype="multipart/form-data">{% csrf_token %}
-{%include 'chat/form-template.html'%}
-<div class="form-group" >
-<div class="col-sm-offset-2-col-sm-10">
 
 
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" class="btn btn-danger " >Submit</button>
+<div id="outer">
+	<div id="container">
+	    <center><h3>REGISTER</h3></center>
+	    <br>
+	    <form method="POST" class="form-horizontal" role="form" action="" enctype="multipart/form-data">
+		    {% csrf_token %}
+			{%for field in form%}
+		        <label>{{field.label_tag}}</label>
+		        {{field}}
+                <br>
+			{%endfor%}
+            <br>
+			<center><button type="submit" class="btn btn-danger">Submit</button></center>
+	    </form>
+	</div>
 </div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</form>
-{% endblock %}
+
+
+
+{%endblock%}
