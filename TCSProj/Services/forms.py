@@ -11,3 +11,16 @@ class SLAForm(forms.ModelForm):
 
         def __init__(self):
             self.fields['service_name'].label = "Service Name"
+
+
+class ServiceSelect(forms.ModelForm):
+
+    class Meta:
+        model = Service
+        fields = ('service_name', 'offering_company',)
+        def __init__(self):
+            self.fields['service_name'].label = "Service Name"
+
+
+
+

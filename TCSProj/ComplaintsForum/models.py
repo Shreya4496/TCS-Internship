@@ -21,7 +21,7 @@ class Company(models.Model):
     company_location=models.CharField(max_length=50)
     point_of_contact=models.CharField(max_length=50)
 
-    def __unicode__(self):  # __str__ for Python 3, __unicode__ for Python 2
+    def __str__(self):  # __str__ for Python 3, __unicode__ for Python 2
         return self.company_name
 
 
@@ -33,7 +33,7 @@ class Service(models.Model):
      service_objective=models.CharField(max_length=1000)
      service_description=models.CharField(max_length=5000)
 
-     def __unicode__(self):  # __str__ for Python 3, __unicode__ for Python 2
+     def __str__(self):  # __str__ for Python 3, __unicode__ for Python 2
          return self.service_name
 
 class Client(models.Model):
@@ -42,7 +42,7 @@ class Client(models.Model):
     client_email=models.EmailField()
     client_contact=models.CharField(max_length=12)
 
-    def __unicode__(self):  # __str__ for Python 3, __unicode__ for Python 2
+    def __str__(self):  # __str__ for Python 3, __unicode__ for Python 2
         return self.client_name
 
 class SLA(models.Model):
@@ -62,7 +62,7 @@ class SLA(models.Model):
     schedule=models.CharField(max_length=50)
 
 
-    def __unicode__(self):  # __str__ for Python 3, __unicode__ for Python 2
+    def __str__(self):  # __str__ for Python 3, __unicode__ for Python 2
         return self.service_name
 
 
@@ -73,7 +73,7 @@ class Chat(models.Model):
     user = models.ForeignKey(User)
     message = models.CharField(max_length=200)
 
-    def __unicode__(self):
+    def __str__(self):
         return self.message
 
     def empty():

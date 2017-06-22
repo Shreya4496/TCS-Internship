@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" class="post-form">{% csrf_token %}
+	{{form.as_p}}
+<button type="Submit" class="save btn btn-default"><a href="{% url 'sla_new' %}">
+    Proceed to fill SLA </a>
+</button>
+</form>
+
+{% endblock %}
