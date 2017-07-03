@@ -19,6 +19,7 @@ from django.contrib import admin
 from ComplaintsForum.views import complaint_new
 from Services.views import sla_new,service_new
 from ChatBox.views import Login,Logout,Home,Post,Messages,register
+from Dashboard.views import Dashboard
 
 
 
@@ -33,4 +34,7 @@ urlpatterns = [
     url(r'^messages/$',Messages, name='messages'),
     url(r'^register/$', register , name='register'),
     url(r'^service_new/$', service_new , name='service_new'),
+    url(r'^dashboard/$',Dashboard , name='dashboard'),
+    
+
 ]

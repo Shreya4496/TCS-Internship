@@ -13,7 +13,7 @@ def service_new(request):
             data.save()
             return render(request, 'done.html')
     else:
-        form = SLAForm()
+        form = ServiceSelect()
     return render(request, 'sla.html', {'form': form})
 
 def sla_new(request):
