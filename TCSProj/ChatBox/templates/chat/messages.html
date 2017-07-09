@@ -1,36 +1,37 @@
+{% load staticfiles %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {%if not request.user.is_superuser%}
     <li class="text-left list-group-item">May I help you? </li>
 
 
 {% for obj in chat %}
     {% if obj.user == request.user %}
-        <li class="text-right list-group-item">{{ obj.message }}</li>
+        <li class="text-right list-group-item date blue">{{ obj.message }}</li>
     {% elif obj.user.is_superuser %}
-        <li class="text-left list-group-item">{{ obj.message }}</li>
+        <li class="text-left list-group-item date blue">{{ obj.message }}</li>
     {% endif %}
 {% endfor %}
-    
+
 
 
 {%else%}
 
 {% for obj in chat %}
 	    {% if obj.user == request.user %}
-        <li class="text-right list-group-item">{{ obj.message }}</li>
+        <li class="text-right list-group-item date green">{{ obj.message }}</li><br>
 		{% else %}
-        <li class="text-left list-group-item">{{ obj.message }}</li>
+        <li class="text-left list-group-item date green">{{ obj.message }}</li>
          {% endif %}
-               
+
 {% endfor %}
 {%endif%}
 
 
- {%comment%}   
+ {%comment%}
 {% empty %}
 {if not request.user.is_superuser}
     <li class="text-right list-group-item">May I help you? </li>
 
      {% empty %}
                     <li class="text-right list-group-item">No messages yet!</li>
-   {%endcomment%} 
-
+   {%endcomment%}
