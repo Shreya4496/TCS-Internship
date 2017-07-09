@@ -34,7 +34,7 @@ urlpatterns = [
     url(r'^messages/$',Messages, name='messages'),
     url(r'^register/$', register , name='register'),
     url(r'^service_new/$', service_new , name='service_new'),
-    url(r'^dashboard/$',Dashboard , name='dashboard'),
+    url(r'^dashboard/$',Dashboard, name='dashboard'),
     
 
 ]
