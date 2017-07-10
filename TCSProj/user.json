@@ -1,0 +1,112 @@
+__all__
+__all__
+[
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$24000$0GiRv1UhbAeq$1QgdRpxi/GoO54QLBRB9WDrYfG660q+lIieK7YO7a5U=",
+    "last_login": "2017-07-09T17:44:03.252Z",
+    "is_superuser": true,
+    "username": "aishna",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2017-06-05T06:32:57.819Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$36000$k5BRyeyEqVhS$cZCDl1JtXEbSDKoeInTdnPU6Ue3TLmwqAGCSqTCkKz0=",
+    "last_login": "2017-06-21T11:01:46.480Z",
+    "is_superuser": true,
+    "username": "shreya",
+    "first_name": "",
+    "last_name": "",
+    "email": "shreyagupta4496@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2017-06-21T10:50:05.770Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$588k33NM4FUR$3LfxXldtPb7pyHci9p6wew7hkgcKEnGTJk87vDBzm3w=",
+    "last_login": "2017-06-21T15:48:24.720Z",
+    "is_superuser": false,
+    "username": "user1",
+    "first_name": "",
+    "last_name": "",
+    "email": "shreya07.gupta@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2017-06-21T15:12:49.853Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$ocRZiWF0U5dK$B1CZd7i6n1Lz5UzfIOqjzK3lpJ1+CbJ9ptojurI/tNo=",
+    "last_login": "2017-06-21T15:47:34.220Z",
+    "is_superuser": true,
+    "username": "shreya967",
+    "first_name": "",
+    "last_name": "",
+    "email": "shreya07.gupta@gmail.com",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2017-06-21T15:15:16.993Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$BrpSXt7tZsp2$yrKpqreVJRy8t9g8SlDb3FMUsQ/Ljm8yf/pwzx20bqI=",
+    "last_login": "2017-06-21T15:48:14.384Z",
+    "is_superuser": false,
+    "username": "user7",
+    "first_name": "",
+    "last_name": "",
+    "email": "shreya07.gupta@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2017-06-21T15:18:33.595Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$30000$wmLzYXYVMprk$THk5cy1IX3cgsC5ZVv49rpdnrt3rAJ9kuskSbTzPzkw=",
+    "last_login": "2017-06-22T08:33:15.767Z",
+    "is_superuser": false,
+    "username": "user2",
+    "first_name": "",
+    "last_name": "",
+    "email": "shreya07.gupta@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2017-06-22T08:31:11.098Z",
+    "groups": [],
+    "user_permissions": []
+  }
+}
+]
