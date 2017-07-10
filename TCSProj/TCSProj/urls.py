@@ -14,16 +14,21 @@ Including another URLconf
     2. Import the include() function: from django.conf.urls import url, include
     3. Add a URL to urlpatterns:  url(r'^blog/', include(blog_urls))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 from django.contrib import admin
 from ComplaintsForum.views import complaint_new
 from Services.views import sla_new,service_new
 from ChatBox.views import Login,Logout,Home,Post,Messages,register
 from Dashboard.views import Dashboard
-
-
+# from rest_framework import routers
+# from Dashboard import views
+# from rest_framework.urlpatterns import format_suffix_patterns
+# router = routers.DefaultRouter()
+# router.register(r'users', views.UserViewSet)
+# router.register(r'groups', views.GroupViewSet)
 
 urlpatterns = [
+    # url(r'^', include(router.urls)),
     url(r'^admin/', admin.site.urls),
     url(r'^complaint_new/$', complaint_new, name='complaint_new'),
     url(r'^sla_new/$', sla_new, name='sla_new'),
@@ -35,6 +40,11 @@ urlpatterns = [
     url(r'^register/$', register , name='register'),
     url(r'^service_new/$', service_new , name='service_new'),
     url(r'^dashboard/$',Dashboard, name='dashboard'),
-    
-
+    # url(r'^', include(router.urls)),
+    # url(r'^api/$',views.ClientList,as_view())
+    # url(r'^api/$', views.ClientList, as_view())
+    url(r'^dashboard_new/',include('Dashboard.urls')),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
+
+# urlpatterns = format_suffix_patterns(urlpatterns)
