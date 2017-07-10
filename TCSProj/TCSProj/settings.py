@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'Services',
     'ChatBox',
     'rest_framework',
+    'homepage'
 ]
 
 MIDDLEWARE_CLASSES = [

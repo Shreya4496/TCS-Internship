@@ -20,6 +20,7 @@ from ComplaintsForum.views import complaint_new
 from Services.views import sla_new,service_new
 from ChatBox.views import Login,Logout,Home,Post,Messages,register
 from Dashboard.views import Dashboard
+from homepage.views import HomePage
 # from rest_framework import routers
 # from Dashboard import views
 # from rest_framework.urlpatterns import format_suffix_patterns
@@ -40,6 +41,7 @@ urlpatterns = [
     url(r'^register/$', register , name='register'),
     url(r'^service_new/$', service_new , name='service_new'),
     url(r'^dashboard/$',Dashboard, name='dashboard'),
+    url(r'^homepage/$',HomePage, name='homepage'),
     # url(r'^', include(router.urls)),
     # url(r'^api/$',views.ClientList,as_view())
     # url(r'^api/$', views.ClientList, as_view())
