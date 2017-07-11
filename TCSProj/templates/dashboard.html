@@ -531,10 +531,26 @@
                         <div class="panel-body">
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
-                                    <i class="fa fa-comment fa-fw"></i> New Comment
-                                    <span class="pull-right text-muted small"><em>4 minutes ago</em>
+
+
+                    Potential Leads
+                    {% for obj in u  %}
+
+                    <h3 style= " color:black; 
+                    height: 25px; width: 100px;
+                    font-weight: normal; font-size:16px; 
+                    font-variant: small; text-align: center; 
+                    font-family:Arial;">
+                    {{ obj.email }}
+                    </h3>{%endfor%}
+
+                                    <i class="fa fa-comment fa-fw"></i> 
+                                     <span class="pull-right text-muted small"><em>4 minutes ago</em>
                                     </span>
                                 </a>
+
+
+                                   
                                 <a href="#" class="list-group-item">
                                     <i class="fa fa-twitter fa-fw"></i> 3 New Followers
                                     <span class="pull-right text-muted small"><em>12 minutes ago</em>
@@ -576,6 +592,7 @@
                                     </span>
                                 </a>
                             </div>
+     
                             <!-- /.list-group -->
                             <a href="#" class="btn btn-default btn-block">View All Alerts</a>
                         </div>
@@ -593,17 +610,24 @@
                         <!-- /.panel-body -->
                     </div>
                     <!-- /.panel -->
-
+ <a href="{% url 'home' %}"><img src="http://www.pentawards.org/media/27737/help-desk.jpg?width=380&height=242" alt="Help Desk" style="width:230px;height:160px;"></a>
                     <!-- /.panel .chat-panel -->
                 </div>
+
                 <!-- /.col-lg-4 -->
             </div>
+              
+
             <!-- /.row -->
         </div>
+
         <!-- /#page-wrapper -->
 
     </div>
     <!-- /#wrapper -->
+
+
+
 
     <!-- jQuery -->
     <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
