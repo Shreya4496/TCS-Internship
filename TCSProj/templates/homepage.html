@@ -72,9 +72,19 @@
                     <li>
                         <a class="page-scroll" href="#contact">Contact</a>
                     </li>
+                    {%if not user.is_authenticated %}
                     <li>
                         <a class="page-scroll"  href = "{% url 'login' %}">Login</a>
                     </li>
+                    {%endif%}
+                    {%if user.is_authenticated %}
+                    <li>
+                        <a class="page-scroll"  href = "{% url 'dashboard' %}">Dashboard</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll"  href = "{% url 'logout' %}">Logout</a>
+                    </li>
+                    {%endif%}
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
