@@ -38,19 +38,8 @@ input[type=text] {
 
 {%if not user.is_authenticated %}
 
-<li  class="nav navbar-nav navbar-right">
 
-<a href = "{% url 'register' %}"><span class="glyphicon glyphicon-off" data-toggle="tooltip" data-placement="bottom" ><font size="5" >Register</font></span></a>&nbsp;
-&nbsp;&nbsp;&nbsp;
 
-</li>
-
-<li  class="nav navbar-nav navbar-right">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-<a href = "{% url 'login' %}"><span class="glyphicon glyphicon-off" data-toggle="tooltip" data-placement="bottom" ><font size="5" >LogIn</font></span></a>&nbsp;
-&nbsp;&nbsp;&nbsp;
-
-</li>
 
 {% block login %}
 {%endblock%}

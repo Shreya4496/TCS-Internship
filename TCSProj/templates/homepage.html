@@ -76,6 +76,9 @@
                     <li>
                         <a class="page-scroll"  href = "{% url 'login' %}">Login</a>
                     </li>
+                    <li>
+                        <a class="page-scroll"  href = "{% url 'register' %}">SignUp</a>
+                    </li>
                     {%endif%}
                     {%if user.is_authenticated %}
                     <li>
