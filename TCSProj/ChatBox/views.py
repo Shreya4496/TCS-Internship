@@ -2,7 +2,8 @@ from django.shortcuts import render
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from TCSProj import settings
-
+from django.http import HttpResponse
+from .forms import UserForm,ServiceProvider,Customer
 
 from ComplaintsForum.models import Chat
 
@@ -26,8 +27,7 @@ def Login(request):
 
 
 
-from django.http import HttpResponse
-from .forms import UserForm,ServiceProvider,Customer
+
 
 def register(request):
     form = UserForm(request.POST or None)
