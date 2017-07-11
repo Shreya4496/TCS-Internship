@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from TCSProj import settings
 from django.http import HttpResponse
 from .forms import UserForm,ServiceProvider,Customer
+from django.contrib.auth.models import User
 
 from ComplaintsForum.models import Chat
 
@@ -14,13 +15,18 @@ def Login(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(username=username, password=password)
+        u= User.objects.all().order_by('?')[:5]
+
+        context = {
+            'u' : u
+        }
         if user is not None:
             if user.is_active:
                 login(request, user)
                 Chat.objects.all().delete()
-                return render(request, 'dashboard.html')
+                return render(request, 'dashboard.html',context)
             else:
-                return render(request, 'dashboard.html', {'error_message': 'Your account has been disabled'})
+                return render(request, 'chat/login.html', {'error_message': 'Your account has been disabled'})
         else:
             return render(request, 'chat/login.html', {'error_message': 'Invalid login'})
     return render(request, 'chat/login.html')

@@ -25,10 +25,16 @@ input[type=text] {
 <body>
 {% block content %}
 
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="{% url 'dashboard' %}" >
-        <span class="glyphicon glyphicon-home" data-toggle="tooltip" data-placement="tooltip" title="Home"><font size="5" >Home</font></span>
-    </a>
 
+
+
+
+{%if user.is_authenticated %}
+
+ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="{% url 'dashboard' %}" >
+        <span class="glyphicon glyphicon-circle" data-toggle="tooltip" data-placement="tooltip" title="Home"><font size="5" >Dashboard</font></span>
+    </a>
+{%endif%}
 
 {%if not user.is_authenticated %}
 
