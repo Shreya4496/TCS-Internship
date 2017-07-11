@@ -532,17 +532,26 @@
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
 
-
-                    Potential Leads
+                <h3 style= " color:black; 
+                    font-weight: normal; font-size:16px; 
+                    font-variant: small; text-align: left; 
+                    font-family:Arial;">
+                    Potential Leads</h3>
+                    
                     {% for obj in u  %}
-
-                    <h3 style= " color:black; 
+                  <h3 style= " color:red; 
                     height: 25px; width: 100px;
                     font-weight: normal; font-size:16px; 
-                    font-variant: small; text-align: center; 
+                    font-variant: small; text-align: left; 
+                    font-family:Arial;">
+                    {{ obj.username }}</h3>
+                      <a href=""><h3 style= " color:blue; 
+                    height: 25px; width: 100px;
+                    font-weight: normal; font-size:16px; 
+                    font-variant: small; text-align:left; 
                     font-family:Arial;">
                     {{ obj.email }}
-                    </h3>{%endfor%}
+                    </h3></a>{%endfor%}
 
                                     <i class="fa fa-comment fa-fw"></i> 
                                      <span class="pull-right text-muted small"><em>4 minutes ago</em>
