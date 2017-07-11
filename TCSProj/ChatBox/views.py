@@ -18,9 +18,9 @@ def Login(request):
             if user.is_active:
                 login(request, user)
                 Chat.objects.all().delete()
-                return render(request, 'chat/home.html')
+                return render(request, 'dashboard.html')
             else:
-                return render(request, 'chat/home.html', {'error_message': 'Your account has been disabled'})
+                return render(request, 'dashboard.html', {'error_message': 'Your account has been disabled'})
         else:
             return render(request, 'chat/login.html', {'error_message': 'Invalid login'})
     return render(request, 'chat/login.html')
@@ -53,8 +53,8 @@ def register(request):
             if user.is_active:
                 #login(request, user)
                 q=1
-                return render(request,'chat/home.html', {'q': q})
-        return render(request,'chat/home.html', {'q': q})
+                return render(request,'dashboard.html', {'q': q})
+        return render(request,'dashboard.html', {'q': q})
 
 
     context ={
