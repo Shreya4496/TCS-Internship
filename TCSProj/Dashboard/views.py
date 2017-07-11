@@ -29,8 +29,13 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 
 def Dashboard(request):
-    return render(request, 'dashboard.html')
 
+    u= User.objects.all().order_by('?')[:5]
+
+    context = {
+        'u' : u
+    }
+    return render(request, 'dashboard.html',context)
 class ClientList(generics.ListCreateAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
