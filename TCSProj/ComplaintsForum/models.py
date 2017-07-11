@@ -44,6 +44,14 @@ class Client(models.Model):
 
     def __str__(self):  # __str__ for Python 3, __unicode__ for Python 2
         return self.client_name
+class Provider(models.Model):
+    provider_name=models.CharField(max_length=50)
+    provider_company=models.CharField(max_length=50)
+    provider_email=models.EmailField()
+    provider_contact=models.CharField(max_length=12)
+
+    def __str__(self):  # __str__ for Python 3, __unicode__ for Python 2
+        return self.client_name
 
 class SLA(models.Model):
     service_name = models.ForeignKey(Service, related_name="sla_service_name", on_delete=models.CASCADE)

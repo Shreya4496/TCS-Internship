@@ -27,7 +27,7 @@ def Login(request):
 
 
 from django.http import HttpResponse
-from .forms import UserForm
+from .forms import UserForm,ServiceProvider,Customer
 
 def register(request):
     form = UserForm(request.POST or None)
@@ -36,9 +36,19 @@ def register(request):
         username = form.cleaned_data['username']
         email = form.cleaned_data['email']
         password = form.cleaned_data['password']
+        option=form.cleaned_data['role']
         user.set_password(password)
         user.save()
         user = authenticate(username=username, password=password, email=email)
+        if option=='provider':
+            form = ServiceProvider(request.POST)
+            data = form.save(commit=False)
+            data.save()
+        elif option=='customer':
+            form = Customer(request.POST)
+            data = form.save(commit=False)
+            data.save()
+
         if user is not None: 
             if user.is_active:
                 #login(request, user)
