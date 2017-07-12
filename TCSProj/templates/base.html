@@ -6,24 +6,31 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
         <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <style>
+body{
+    background: url("https://buidln.clipdealer.com/002/451/248//previews/1--2451248-blue%20puzzle%20in%20conceptual%20form%20for%20your%20text%20or%20background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+</style>
     </head>
     <body>
         <div class="page-header">
-            <a href="{% url 'complaint_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">CRM</a></h1>
-        </div>
-        <div class="page-header">
-            <a href="{% url 'sla_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-            <h1><a href="/">SLA</a></h1>
+           <h2> <a href="{% url 'dashboard' %}" class="top-menu"><span class="glyphicon glyphicon-home"> Dashboard</span></a>
+           </h2>
         </div>
 
-        <div class="content container">
-            <div class="row">
+        <div style="margin: 50px 100px 100px 100px" class="content container"><font face="BedRock" size="4">
+            <div class="row" style="margin: 50px 10px 10px 10px">
+
                 <div class="col-md-8">
+
                     {% block content %}
                     {% endblock %}
                 </div>
-            </div>
+
+            </div></font>
         </div>
     </body>
 </html>
