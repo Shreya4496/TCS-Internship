@@ -1,0 +1,54 @@
+{% extends 'homepage.html' %}
+{%load staticfiles %}
+{%block Register%}
+<head>
+    <meta charset="utf-8" >
+    <title>Register</title>
+
+  
+    <link rel="stylesheet" type="text/css" href ="{% static 'chat/login.css'%}" />
+    <style type="text/css">
+    	input{
+			width: 100%;
+    	}
+        label{
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+{%comment%}
+
+ <td class=" col-md-1"><input type="radio" name="chooseone" value="Prime" onclick="func({{ob1.locker__locker_id}})" ><label for="Prime"> Prime: </label> {{ob1.day2}}</span></td>	
+ {%endcomment%}
+
+
+{%if q%}
+<center><p style = "font-family: Arial; color: Red;"> <font size="4">You have been successfully registered. Please select your role in the SealDEal and login to continue.</font> </p></center>
+{%endif%}
+
+
+
+<div id="outer">
+	<div id="container">
+	    <center><h3>Choose Your role</h3></center>
+	    <br>
+
+
+
+
+
+  <form method="POST" class="form-horizontal" role="form" action="" enctype="multipart/form-data">
+		<p>
+		<label>	<input type="radio" name="chooseone" value="provider" style="vertical-align: middle;margin: 0px;" /> Service Provider<br>
+		</label>
+		<label>	<input type="radio" name="role" value="client" checked style="vertical-align: middle;margin: 0px;"/>&nbsp;&nbsp;Customer<br>
+		</label>
+			</p>
+				<center><button type="submit" class="btn btn-danger"><a href = "{%url 'homepage'%}">Proceed</a></button></center>
+	    </form>
+
+	    	</div>
+</div>
+
+{%endblock%}

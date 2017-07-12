@@ -34,7 +34,44 @@ def Login(request):
 
 
 
+def register(request):
+    form = UserForm(request.POST or None)
+    if form.is_valid():
+        user = form.save(commit=False)
+        username = form.cleaned_data['username']
+        email = form.cleaned_data['email']
+        password = form.cleaned_data['password']
+        user.set_password(password)
+        user.save()
+        user = authenticate(username=username, password=password, email=email)
+        if user is not None: 
+            if user.is_active:
+                #login(request, user)
+                q=1
+                return render(request,'chat/after_reg.html',{'q': q})
+                #return render(request,'chat/home.html', {'q': q})
+        #return render(request,'chat/home.html', {'q': q})
+        return render(request,'chat/after_reg.html',{'q': q})
 
+
+    context ={
+        "form": form,
+    }
+    return render(request, 'chat/registration_form.html', context)
+
+
+"""
+def success(request):
+    q1 = request.GET.get("chooseone")
+    if q1=="Provider":
+    elif q1=="Customer":
+"""
+
+
+
+
+
+"""
 def register(request):
     form = UserForm(request.POST or None)
     if form.is_valid():
@@ -68,7 +105,7 @@ def register(request):
     }
     return render(request, 'chat/registration_form.html', context)
 
-
+"""
 
 """
 

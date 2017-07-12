@@ -2,7 +2,6 @@
 {%load staticfiles %}
 
 {%block Register%}
-<br><br>
 <head>
     <meta charset="utf-8" >
     <title>Register</title>
@@ -19,14 +18,9 @@
     </style>
 </head>
 
-
 {%if error_message%}
 <p><strong>{{error_message}}</strong></p>
 {%endif%}
-
-
-
-
 
 <div id="outer">
 	<div id="container">
@@ -40,18 +34,8 @@
                 <br>
 			{%endfor%}
             <br>
-		<p>Select your role<br></p>
-		<p>
-		<label>	<input type="radio" name="role" value="provider" style="vertical-align: middle;margin: 0px;" /> Service Provider<br>
-		</label>
-		<label>	<input type="radio" name="role" value="client" checked style="vertical-align: middle;margin: 0px;"/>Customer<br>
-		</label>
-			</p>
 			<center><button type="submit" class="btn btn-danger">Submit</button></center>
 	    </form>
 	</div>
 </div>
-
-
-
 {%endblock%}
