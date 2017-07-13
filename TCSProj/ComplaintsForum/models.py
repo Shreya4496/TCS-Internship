@@ -5,16 +5,6 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 
-class Complaint(models.Model):
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    linked_company = models.CharField(max_length=1000)
-    complaint_type = models.CharField(max_length=100)
-    complaint_description = models.CharField(max_length=5000)
-
-    def __unicode__(self):  # __str__ for Python 3, __unicode__ for Python 2
-        return self.first_name
-
 
 class Company(models.Model):
     company_name=models.CharField(max_length=50)
@@ -37,7 +27,7 @@ class Service(models.Model):
          return self.service_name
 
 class Client(models.Model):
-    client_name=models.CharField(max_length=50)
+    client_name=models.CharField(max_length=50,default="ABC", editable=False)
     client_company=models.CharField(max_length=50)
     client_email=models.EmailField()
     client_contact=models.CharField(max_length=12)
@@ -45,7 +35,7 @@ class Client(models.Model):
     def __str__(self):  # __str__ for Python 3, __unicode__ for Python 2
         return self.client_name
 class Provider(models.Model):
-    provider_name=models.CharField(max_length=50)
+    provider_name=models.ForeignKey(Company,on_delete=models.CASCADE)
     provider_company=models.CharField(max_length=50)
     provider_email=models.EmailField()
     provider_contact=models.CharField(max_length=12)
@@ -59,7 +49,7 @@ class SLA(models.Model):
     service_id = models.ForeignKey(Service, on_delete=models.CASCADE)
     company_name=models.ForeignKey(Company, on_delete=models.CASCADE)
    # vendor=models.ForeignKey(Company, on_delete=models.CASCADE)
-    point_of_contact=models.CharField(max_length=50)
+    point_of_contact=models.ForeignKey(Company,related_name="sla_point_of_contact",on_delete=models.CASCADE)
     client_name=models.ForeignKey(Client, on_delete=models.CASCADE)
     service_date = models.DateField()
     target_audience=models.CharField(max_length=500)
@@ -73,6 +63,10 @@ class SLA(models.Model):
     def __str__(self):  # __str__ for Python 3, __unicode__ for Python 2
         return self.service_name
 
+class ServiceSelected(models.Model):
+    client_name=models.ForeignKey(Client,on_delete=models.CASCADE)
+    offering_company=models.ForeignKey(Company,on_delete=models.CASCADE)
+    serviceSelected=models.ForeignKey(Service,on_delete=models.CASCADE)
 
 
 
@@ -91,4 +85,11 @@ class Chat(models.Model):
 
 
 
+class Complaint(models.Model):
+    client_name=models.ForeignKey(Client,on_delete=models.CASCADE)
+    linked_company = models.ForeignKey(Company,on_delete=models.CASCADE)
+    complaint_type = models.CharField(max_length=100)
+    complaint_description = models.CharField(max_length=5000)
 
+    def __unicode__(self):  # __str__ for Python 3, __unicode__ for Python 2
+        return self.first_name
