@@ -27,7 +27,7 @@ class Service(models.Model):
          return self.service_name
 
 class Client(models.Model):
-    client_name=models.CharField(max_length=50,default="ABC", editable=False)
+    client_name=models.CharField(max_length=50, default="ABC", editable=False)
     client_company=models.CharField(max_length=50)
     client_email=models.EmailField()
     client_contact=models.CharField(max_length=12)
