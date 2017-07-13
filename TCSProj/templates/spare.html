@@ -1,0 +1,38 @@
+
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+</head>
+
+
+<body>
+
+<div class="ui segment" id="Hotel_details" style="margin-top:50px;">
+    <div id="client_name">
+
+</div>
+
+<script>
+
+    var url = "{% url 'api' %}";
+    console.log(url);
+$.ajax({
+  url: url,
+  dataType: 'json',
+  success: function(result){
+      for(i=0;i<result["results"].length;i++){
+                   var div = document.createElement('div');
+          		   var new1 = document.getElementById('client_name');
+          		   div.innerHTML = result["results"][i].client_name;
+                   new1.appendChild(div);
+					}
+
+//            console.log(result.count);
+
+        }
+});
+
+</script>
+</body>
+</html>
