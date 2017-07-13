@@ -542,6 +542,8 @@
                             <div class="list-group">
                                 <a href="#" class="list-group-item">
 
+
+                     {%if bit=='0'%}           
                 <h3 style= " color:grey; 
                     font-weight: bold; font-size:16px; 
                     font-variant: small; text-align: left; 
@@ -560,7 +562,7 @@
                     font-family:Arial;">
                     {{ obj.email }}
                     </h3></a>{%endfor%}
-
+                    {%endif%}
                                     <i class="fa fa-comment fa-fw"></i> 
                                      <span class="pull-right text-muted small"><em>4 minutes ago</em>
                                     </span>

@@ -60,13 +60,20 @@ def register(request):
     return render(request, 'chat/registration_form.html', context)
 
 
-"""
-def success(request):
-    q1 = request.GET.get("chooseone")
-    if q1=="Provider":
-    elif q1=="Customer":
-"""
 
+def choosen_role(request):
+    q1 = request.GET.get("chooseone")
+    if q1=="provider":
+        bit=0
+        form = ServiceProvider(request.POST)
+        data = form.save(commit=False)
+        data.save()
+    elif q1=="client":
+        bit=1
+        form = Customer(request.POST)
+        data = form.save(commit=False)
+        data.save()
+    return render(request,'dashboard.html',{'bit':bit})
 
 
 
