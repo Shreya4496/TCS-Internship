@@ -71,9 +71,13 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
+
+
+
+
 def Dashboard(request):
 
-    u= User.objects.all().order_by('?')[:5]
+    u= User.objects.all().order_by('?')[:6]
 
     dataSource = {}
     dataSource['chart'] = {

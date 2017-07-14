@@ -4,6 +4,7 @@ from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from TCSProj import settings
 from django.http import HttpResponse
 from .forms import UserForm,ServiceProvider,Customer
+from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth.models import User
 
 from ComplaintsForum.models import Chat
@@ -30,6 +31,21 @@ def Login(request):
         else:
             return render(request, 'chat/login.html', {'error_message': 'Invalid login'})
     return render(request, 'chat/login.html')
+
+
+def privacy(request):
+    if request.method=="POST":
+        form = PasswordChangeForm(data=request.POST, user=request.user)
+        if form.is_valid():
+            form.save()
+            return render(request,'dashboard.html')
+        return render(request,'dashboard.html')
+    else :
+        form = PasswordChangeForm(user=request.user)
+        context ={
+        "form": form,
+        }
+        return render(request,'privacy_settings.html',context)
 
 
 
@@ -155,4 +171,6 @@ def Post(request):
 def Messages(request):
     c = Chat.objects.all()
     return render(request, 'chat/messages.html', {'chat': c})
+
+
 

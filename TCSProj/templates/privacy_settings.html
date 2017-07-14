@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{%load staticfiles %}
+{%block settings%}
+
+<head>
+    <meta charset="utf-8" >
+    <title>Privacy Settings</title>
+
+  
+    <link rel="stylesheet" type="text/css" href ="{% static 'chat/login.css'%}" />
+    <style type="text/css">
+    	input{
+			width: 100%;
+    	}
+        label{
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+
+<br><br><br>
+<div id="outer">
+	<div id="container">
+	    <center><h3>Change Password</h3></center>
+	    <br>
+
+
+<form method="POST" class="form-horizontal" role="form" action="" enctype="multipart/form-data">
+		    {% csrf_token %}
+			{{form.as_p}}
+            <br>
+			<center><button type="submit" class="btn btn-danger">Submit</button></center>
+	    </form>
+	    
+	</div>
+</div>
+
+{%endblock%}
