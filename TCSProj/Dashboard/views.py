@@ -34,7 +34,8 @@ def chart(request):
         "xAxisName": "Services",
         "yAxisName": "No. of Clients",
         "numberPrefix": "",
-        "theme": "zune"
+        "theme": "fint",
+        "labelDisplay": "auto",
     }
 
     # The data for the chart should be in an array where each element of the array is a JSON object
