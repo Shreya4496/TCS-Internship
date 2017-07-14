@@ -1,3 +1,4 @@
+from __future__ import print_function
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from django.shortcuts import render
@@ -41,11 +42,11 @@ def chart(request):
 
     dataSource['data'] = []
     # Iterate through the data in `Revenue` model and insert in to the `dataSource['data']` list.
-    for key,value in ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected')):
+    for key in ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected')):
         data = {}
-        print key, value
-        data['label'] = value
-        data['value'] = key
+        print(key['serviceSelected'])
+        data['label'] = key['serviceSelected']
+        data['value'] = key['dcount']
         dataSource['data'].append(data)
 
     # Create an object for the Column 2D chart using the FusionCharts class constructor
