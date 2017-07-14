@@ -1,20 +1,51 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from django.shortcuts import render
+from django.db.models import Count
 # from django.contrib.auth import authenticate, logout, login
 # from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 # from TCSProj import settings
+import json
+from django.core import serializers
 from rest_framework import viewsets
 from .serializers import UserSerializer, GroupSerializer
 from rest_framework import generics
 from Dashboard.serializers import ClientSerializer
-from ComplaintsForum.models import Client
+from ComplaintsForum.models import Client, ServiceSelected
 # from django.utils.encoding import smart_unicode
 # from rest_framework import renderers
 from django.shortcuts import render
-
+from fusioncharts import FusionCharts
 
 @login_required(login_url='/login/')
+
+def chart(request):
+    # Chart data is passed to the `dataSource` parameter, as dict, in the form of key-value pairs.
+    dataSource = {}
+    dataSource['chart'] = {
+        "caption": "Service Progress",
+        "subCaption": "XYZ Company",
+        "xAxisName": "Services",
+        "yAxisName": "No. of Clients",
+        "numberPrefix": "",
+        "theme": "zune"
+    }
+
+    # The data for the chart should be in an array where each element of the array is a JSON object
+    # having the `label` and `value` as key value pair.
+
+    dataSource['data'] = []
+    # Iterate through the data in `Revenue` model and insert in to the `dataSource['data']` list.
+    for key in ServiceSelected.objects.all():
+        data = {}
+        data['label'] = key.serviceSelected
+        data['value'] = json.dumps(ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected')))
+        dataSource['data'].append(data)
+
+    # Create an object for the Column 2D chart using the FusionCharts class constructor
+    column2D = FusionCharts("column2D", "ex1", "600", "350", "chart-1", "json", dataSource)
+    return render(request, 'spare.html', {'output': column2D.render()})
+
 
 class UserViewSet(viewsets.ModelViewSet):
     """
@@ -48,15 +79,6 @@ class ClientList(generics.ListCreateAPIView):
 class ClientDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = Client.objects.all()
     serializer_class = ClientSerializer
-
-class ClientList(generics.ListCreateAPIView):
-    queryset = Client.objects.all()
-    serializer_class = ClientSerializer
-
-class ClientDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Client.objects.all()
-    serializer_class = ClientSerializer
-
 
 
 # def json_search(request):
