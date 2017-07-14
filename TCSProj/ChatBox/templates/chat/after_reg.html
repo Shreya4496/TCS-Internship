@@ -1,6 +1,6 @@
-{% extends 'homepage.html' %}
+{% extends 'base.html' %}
 {%load staticfiles %}
-{%block Register%}
+{%block afterRegister%}
 <head>
     <meta charset="utf-8" >
     <title>Register</title>
@@ -18,8 +18,7 @@
 </head>
 
 {%comment%}
-
- <td class=" col-md-1"><input type="radio" name="chooseone" value="Prime" onclick="func({{ob1.locker__locker_id}})" ><label for="Prime"> Prime: </label> {{ob1.day2}}</span></td>
+ <input type="radio" name="chooseone" value="P" onclick="func({{ob1.lock__lock_id}})" ><label for="Prime"> </label> {{ob1.day2}}
  {%endcomment%}
 
 
@@ -40,7 +39,7 @@
 
   <form method="POST" class="form-horizontal" role="form" action="" enctype="multipart/form-data">
 		<p>
-		<label>	<input type="radio" name="chooseone" value="provider" style="vertical-align: middle;margin: 0px;" />&nbsp;&nbsp; Service Provider<br>
+		<label>	<input type="radio" name="role" value="provider" style="vertical-align: middle;margin: 0px;" />&nbsp;&nbsp; Service Provider<br>
 		</label>
 		<label>	<input type="radio" name="role" value="client" checked style="vertical-align: middle;margin: 0px;"/>&nbsp;&nbsp;Customer<br>
 		</label>

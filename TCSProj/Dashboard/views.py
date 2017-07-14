@@ -16,7 +16,7 @@ from ComplaintsForum.models import Client, ServiceSelected
 # from django.utils.encoding import smart_unicode
 # from rest_framework import renderers
 from django.shortcuts import render
-from fusioncharts import FusionCharts
+from Dashboard.fusioncharts import FusionCharts
 # from django.core import serializers
 
 # json_data = serializers.serialize('json', data)
