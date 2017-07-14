@@ -29,12 +29,10 @@ input[type=text] {
 
 
 
-{%if user.is_authenticated %}
 
- &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;<a href="{% url 'dashboard' %}" >
-        <span class="glyphicon glyphicon-circle" data-toggle="tooltip" data-placement="tooltip" title="Home"><font size="5" >Dashboard</font></span>
-    </a>
-{%endif%}
+  <a href="{% url 'dashboard' %}"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+   
+
 
 {%if not user.is_authenticated %}
 
@@ -57,10 +55,6 @@ input[type=text] {
 
 
 {%if user.is_authenticated%}
-<li  class="nav navbar-nav navbar-right">
-<a href = "{% url 'logout' %}"><span class="glyphicon glyphicon-off" ata-toggle="tooltip" data-placement="bottom"><font size="5" >Logout</font></span>&nbsp;
-&nbsp;&nbsp;&nbsp;</a>
-</li>
 
 
 

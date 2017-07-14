@@ -50,14 +50,14 @@ def privacy(request):
 
 
 def search(request):
-    users = User.objects.all()
+    u = User.objects.all()
     query=request.GET.get("q")
     if query:
-        users = users.filter(
+        u = u.filter(
             Q(username__icontains=query)|
             Q(email__icontains=query)
             ).distinct()
-    return render(request, 'dashboard.html', {'u': users})
+    return render(request, 'dashboard.html', {'u': u})
 
 
 
