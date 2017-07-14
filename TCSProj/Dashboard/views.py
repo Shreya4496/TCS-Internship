@@ -45,7 +45,7 @@ def chart(request):
     # Iterate through the data in `Revenue` model and insert in to the `dataSource['data']` list.
     for key in ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected')):
         data = {}
-        print(key['serviceSelected'])
+        print(key)
         data['label'] = key['serviceSelected']
         data['value'] = key['dcount']
         dataSource['data'].append(data)
@@ -75,10 +75,38 @@ def Dashboard(request):
 
     u= User.objects.all().order_by('?')[:5]
 
-    context = {
-        'u' : u
+    dataSource = {}
+    dataSource['chart'] = {
+        "caption": "Service Progress",
+        "subCaption": "XYZ Company",
+        "xAxisName": "Services",
+        "yAxisName": "No. of Clients",
+        "numberPrefix": "",
+        "theme": "fint",
+        "labelDisplay": "auto",
     }
-    return render(request, 'dashboard.html',context)
+
+    # The data for the chart should be in an array where each element of the array is a JSON object
+    # having the `label` and `value` as key value pair.
+
+    dataSource['data'] = []
+    # Iterate through the data in `Revenue` model and insert in to the `dataSource['data']` list.
+    for key in ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected')):
+        data = {}
+        print(key)
+        data['label'] = key['serviceSelected']
+        data['value'] = key['dcount']
+        dataSource['data'].append(data)
+
+    # Create an object for the Column 2D chart using the FusionCharts class constructor
+    column2D = FusionCharts("column2D", "ex1", "600", "350", "chart-1", "json", dataSource)
+    context = {
+        'u': u,
+        'output': column2D.render(),
+    }
+    return render(request, 'dashboard.html', context)
+
+    # return render(request, 'dashboard.html',context)
 
 class ClientList(generics.ListCreateAPIView):
     queryset = Client.objects.all()
