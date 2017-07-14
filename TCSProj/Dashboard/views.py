@@ -16,6 +16,11 @@ from ComplaintsForum.models import Client, ServiceSelected
 # from rest_framework import renderers
 from django.shortcuts import render
 from fusioncharts import FusionCharts
+# from django.core import serializers
+
+# json_data = serializers.serialize('json', data)
+# return HttpResponse(json_data, mimetype='application/json')
+
 
 @login_required(login_url='/login/')
 
@@ -36,10 +41,11 @@ def chart(request):
 
     dataSource['data'] = []
     # Iterate through the data in `Revenue` model and insert in to the `dataSource['data']` list.
-    for key in ServiceSelected.objects.all():
+    for key,value in ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected')):
         data = {}
-        data['label'] = key.serviceSelected
-        data['value'] = json.dumps(ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected')))
+        print key, value
+        data['label'] = value
+        data['value'] = key
         dataSource['data'].append(data)
 
     # Create an object for the Column 2D chart using the FusionCharts class constructor
