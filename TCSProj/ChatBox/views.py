@@ -32,7 +32,7 @@ def Login(request):
             return render(request, 'chat/login.html', {'error_message': 'Invalid login'})
     return render(request, 'chat/login.html')
 
-
+#CHANGE PASSWORD
 def privacy(request):
     if request.method=="POST":
         form = PasswordChangeForm(data=request.POST, user=request.user)
@@ -46,6 +46,20 @@ def privacy(request):
         "form": form,
         }
         return render(request,'privacy_settings.html',context)
+
+
+
+def search(request):
+    users = User.objects.all()
+    query=request.GET.get("q")
+    if query:
+        users = users.filter(
+            Q(username__icontains=query)|
+            Q(email__icontains=query)
+            ).distinct()
+    return render(request, 'dashboard.html', {'u': users})
+
+
 
 
 
