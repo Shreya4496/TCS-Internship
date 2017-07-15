@@ -49,7 +49,12 @@ urlpatterns = [
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # url(r'^spare/$', spare.html),
     url(r'^spare/$', chart, name='chart'),
+<<<<<<< Updated upstream
     url(r'^register_activate/activation/$',activate, name='activation')
+=======
+    url(r'^todo/$', TemplateView.as_view(template_name='todo.html'), name='todo'),
+
+>>>>>>> Stashed changes
     # url(r'^spare/$', TemplateView.as_view(template_name='spare.html'), name='home'),
     # url(r'^spare/$', Dashboard.views.json_search, name="search")
 ]

@@ -1,0 +1,155 @@
+{% load staticfiles %}
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+
+<title>Todo Example - SealDeal</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<link href="{% static 'css/todo.css' %}" rel="stylesheet">
+<!-- <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script> -->
+<!-- <script src="{% static 'js/todo.js' %}"></script> -->
+</head>
+
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="todolist not-done">
+             <h1>Todos</h1>
+                <input type="text" class="form-control add-todo" placeholder="Add todo">
+                    <button id="checkAll" class="btn btn-success">Mark all as done</button>
+                    
+                    <hr>
+                    <ul id="sortable" class="list-unstyled">
+                    <li class="ui-state-default">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" />Take out the trash</label>
+                        </div>
+                    </li>
+                    <li class="ui-state-default">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" />Buy bread</label>
+                        </div>
+                    </li>
+                    <li class="ui-state-default">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" value="" />Teach penguins to fly</label>
+                        </div>
+                    </li>
+                </ul>
+                <div class="todo-footer">
+                    <strong><span class="count-todos"></span></strong> Items Left
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="todolist">
+             <h1>Already Done</h1>
+                <ul id="done-items" class="list-unstyled">
+                    <li>Some item <button class="remove-item btn btn-default btn-xs pull-right"><span class="glyphicon glyphicon-remove"></span></button></li>
+                    
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+<script type="text/javascript">
+$( document ).ready(function() {
+$("#sortable").sortable();
+$("#sortable").disableSelection();
+
+countTodos();
+
+// all done btn
+$("#checkAll").click(function(){
+    AllDone();
+});
+
+//create todo
+$('.add-todo').on('keypress',function (e) {
+      e.preventDefault
+      if (e.which == 13) {
+           if($(this).val() != ''){
+           var todo = $(this).val();
+            createTodo(todo); 
+            countTodos();
+           }else{
+               // some validation
+           }
+      }
+});
+// mark task as done
+$('.todolist').on('change','#sortable li input[type="checkbox"]',function(){
+    if($(this).prop('checked')){
+        var doneItem = $(this).parent().parent().find('label').text();
+        $(this).parent().parent().parent().addClass('remove');
+        done(doneItem);
+        countTodos();
+    }
+});
+
+//delete done task from "already done"
+$('.todolist').on('click','.remove-item',function(){
+    removeItem(this);
+});
+
+// count tasks
+function countTodos(){
+    var count = $("#sortable li").length;
+    $('.count-todos').html(count);
+}
+
+//create task
+function createTodo(text){
+    var markup = '<li class="ui-state-default"><div class="checkbox"><label><input type="checkbox" value="" />'+ text +'</label></div></li>';
+    $('#sortable').append(markup);
+    $('.add-todo').val('');
+}
+
+//mark task as done
+function done(doneItem){
+    var done = doneItem;
+    var markup = '<li>'+ done +'<button class="btn btn-default btn-xs pull-right  remove-item"><span class="glyphicon glyphicon-remove"></span></button></li>';
+    $('#done-items').append(markup);
+    $('.remove').remove();
+}
+
+//mark all tasks as done
+function AllDone(){
+    var myArray = [];
+
+    $('#sortable li').each( function() {
+         myArray.push($(this).text());   
+    });
+    
+    // add to done
+    for (i = 0; i < myArray.length; i++) {
+        $('#done-items').append('<li>' + myArray[i] + '<button class="btn btn-default btn-xs pull-right  remove-item"><span class="glyphicon glyphicon-remove"></span></button></li>');
+    }
+    
+    // myArray
+    $('#sortable li').remove();
+    countTodos();
+}
+
+//remove done task from list
+function removeItem(element){
+    $(element).parent().remove();
+}
+});
+</script>
+
+</body>
