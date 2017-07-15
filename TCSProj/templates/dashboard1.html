@@ -39,7 +39,7 @@
 
 </head>
 
-<body style="background-color:#021264">
+<body>
 
 
 
@@ -47,27 +47,25 @@
 
 
         <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0;background-color:#021264">
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar" style="color:#FFFFFF"></span>
-                    <span class="icon-bar"style="color:#FFFFFF"></span>
-                    <span class="icon-bar"style="color:#FFFFFF"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
                 </button>
-      <!--          <a class="navbar-brand" href="{% url 'homepage' %}" >Home</a>
+                <a class="navbar-brand" href="{% url 'homepage' %}" >Home</a> 
 
-    </a>-->
-    <a href="{% url 'homepage' %}" class="btn btn-info btn-lg">
-          <span class="glyphicon glyphicon-home"></span> Home
-        </a>
+    </a>
+
             </div>
             <!-- /.navbar-header -->
 
             <ul class="nav navbar-top-links navbar-right">
                 <li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
-                        <i class="fa fa-envelope fa-fw" style="color:#FFFFFF"></i> <i class="fa fa-caret-down"style="color:#FFFFFF"></i>
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
 
 
@@ -123,7 +121,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell fa-fw" style="color:#FFFFFF"></i> <i class="fa fa-caret-down"style="color:#FFFFFF"></i>
+                        <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-alerts">
                         <li>
@@ -183,7 +181,7 @@
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-user fa-fw"style="color:#FFFFFF"></i> <i class="fa fa-caret-down"style="color:#FFFFFF"></i>
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-user">
                         <li><a href="{% url 'dashboard' %}"><i class="fa fa-user fa-fw"></i> User Profile</a>
@@ -206,26 +204,24 @@
 
 <form class="navbar-default sidebar" role="search" method="GET" action="#">
  <div class="sidebar-nav navbar-collapse">
-  <ul class="nav" >
-<li class="sidebar-search"style="background-color:#021264">
-<div class="input-group custom-search-form"style="background-color:021264">
-<div class="form-group"style="background-color:021264">
+  <ul class="nav" id="side-menu">
+<li class="sidebar-search">
+<div class="input-group custom-search-form">
+<div class="form-group">
 <input type="text" class="form-control" name="q" placeholder="Search " value="{{request.GET.q}}"/>  </div>
 
 <button type="submit" class="btn btn-primary"><i class="fa fa-search"></i></button>
-    
 </div></li></ul></div>
 </form>
 
 
 
 
-
 {%comment%}
-            <div class="navbar-default sidebar" role="search"  method="GET" action="{% url 'search' %}" style="background-color:#021264">
-                <div class="sidebar-nav navbar-collapse"style="background-color:#021264">
-                    <ul class="nav" id="side-menu"style="background-color:#021264">
-                        <li class="sidebar-search" style="background-color:#021264">
+            <div class="navbar-default sidebar" role="search"  method="GET" action="{% url 'search' %}">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li class="sidebar-search">
                             <div class="input-group custom-search-form">
                             <div class="form-group">
                                 <input type="text" class="form-control" placeholder="Search..." name="q" value="{{request.GET.q}}"/></div>
