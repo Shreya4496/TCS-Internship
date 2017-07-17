@@ -3,31 +3,25 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User, Group
 from django.shortcuts import render
 from django.db.models import Count
-# from django.contrib.auth import authenticate, logout, login
-# from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-# from TCSProj import settings
-import json
-from django.core import serializers
 from rest_framework import viewsets
 from .serializers import UserSerializer, GroupSerializer
 from rest_framework import generics
 from Dashboard.serializers import ClientSerializer
 from ComplaintsForum.models import Client, ServiceSelected
-# from django.utils.encoding import smart_unicode
-# from rest_framework import renderers
 from django.shortcuts import render
 from Dashboard.fusioncharts import FusionCharts
-# from django.core import serializers
-import pdfkit
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseNotFound
-from django.http import HttpResponse
-
+# from django.shortcuts import render
 # json_data = serializers.serialize('json', data)
 # return HttpResponse(json_data, mimetype='application/json')
-
+from ComplaintsForum.models import *
 
 @login_required(login_url='/login')
+
+def post_list(request):
+    posts = ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected'))
+    return render(request, "spare.html", {'posts': posts})
 
 
 class UserViewSet(viewsets.ModelViewSet):
