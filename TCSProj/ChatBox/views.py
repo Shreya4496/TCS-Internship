@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, logout, login
 from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from TCSProj import settings
@@ -28,7 +28,7 @@ def Login(request):
             if user.is_active:
                 login(request, user)
                 Chat.objects.all().delete()
-                return render(request, 'dashboard.html',context)
+                return render(request, 'dashboard.html', context)
             else:
                 return render(request, 'chat/login.html', {'error_message': 'Your account has been disabled'})
         else:
@@ -133,7 +133,7 @@ def choosen_role(request):
         form = Customer(request.POST)
         data = form.save(commit=False)
         data.save()
-    return render(request,'dashboard.html',{'bit':bit})
+    return redirect(request,'dashboard.html',{'bit':bit})
 
 
 
