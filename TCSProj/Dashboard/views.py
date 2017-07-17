@@ -30,6 +30,7 @@ def my_service_client(request):
     print (posts)
     return render(request, "dashboard_cust.html", {'posts': posts})
 
+
 def service_list(request):
     posts = Service.objects.all()
     print (posts)

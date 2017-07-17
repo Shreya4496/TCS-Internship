@@ -17,7 +17,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from ComplaintsForum.views import complaint_new
-from Services.views import sla_new,service_new
+from Services.views import sla_new,service_new,service_create,service_all
 from ChatBox.views import Login,Logout,Home,Post,Messages,register,privacy,activate,choosen_role
 from Dashboard.views import Dashboard, post_list,pdf_view, DashboardCust, service_list, my_service_client
 from homepage.views import HomePage
@@ -55,7 +55,8 @@ urlpatterns = [
     url(r'^spare/$', post_list, name='spare'),
     url(r'^spare1/$', service_list, name='provider'),
     url(r'^spare/$', my_service_client, name='client'),
-
+    url(r'^service_create/$', service_create, name='service_create'),
+url(r'^service_all/$', service_all, name='service_all'),
     # url(r'^spare/$', Dashboard.views.json_search, name="search")
 ]
 

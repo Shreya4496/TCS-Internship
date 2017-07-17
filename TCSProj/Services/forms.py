@@ -22,5 +22,9 @@ class ServiceSelect(forms.ModelForm):
             self.fields['service_name'].label = "Service Name"
 
 
-
-
+class ServiceCreate(forms.ModelForm):
+    class Meta:
+        model= Service
+        fields = '__all__'
+        def __init__(self):
+            self.fields['service_name'].label = "Service Name"
