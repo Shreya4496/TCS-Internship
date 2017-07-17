@@ -16,6 +16,7 @@ from django.http import HttpResponse, HttpResponseNotFound
 # json_data = serializers.serialize('json', data)
 # return HttpResponse(json_data, mimetype='application/json')
 from ComplaintsForum.models import *
+from reportlab.pdfgen import canvas
 
 @login_required(login_url='/login')
 
@@ -39,7 +40,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-
+"""
 def pdf_view(request):
     fs = FileSystemStorage()
     filename = 'Dashboard_SealDeal.pdf'
@@ -51,7 +52,15 @@ def pdf_view(request):
     else:
         return HttpResponseNotFound('The requested pdf was not found in our server.')
     return render(request, 'dashboard.html')
-
+"""
+def pdf_view(request):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
+    p = canvas.Canvas(response)
+    p.drawString(100, 100, "CONTENT TO BE ADDED HERE")
+    p.showPage()
+    p.save()
+    return response
 
 def Dashboard(request):
 
