@@ -19,7 +19,7 @@ from django.contrib import admin
 from ComplaintsForum.views import complaint_new
 from Services.views import sla_new,service_new
 from ChatBox.views import Login,Logout,Home,Post,Messages,register,privacy,search,activate
-from Dashboard.views import Dashboard, chart
+from Dashboard.views import Dashboard
 from homepage.views import HomePage
 # from rest_framework import routers
 from Dashboard import views
@@ -48,7 +48,7 @@ urlpatterns = [
     url(r'^dashboard_new/',include('Dashboard.urls'), name='dashboard_api'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     # url(r'^spare/$', spare.html),
-    url(r'^spare/$', chart, name='chart'),
+    # url(r'^spare/$', chart, name='chart'),
     url(r'^register_activate/activation/$',activate, name='activation'),
     url(r'^todo/$', TemplateView.as_view(template_name='todo.html'), name='todo'),
     # url(r'^spare/$', TemplateView.as_view(template_name='spare.html'), name='home'),

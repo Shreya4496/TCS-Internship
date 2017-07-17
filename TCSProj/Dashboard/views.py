@@ -18,41 +18,16 @@ from ComplaintsForum.models import Client, ServiceSelected
 from django.shortcuts import render
 from Dashboard.fusioncharts import FusionCharts
 # from django.core import serializers
+import pdfkit
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse, HttpResponseNotFound
+from django.http import HttpResponse
 
 # json_data = serializers.serialize('json', data)
 # return HttpResponse(json_data, mimetype='application/json')
 
 
 @login_required(login_url='/login')
-
-def chart(request):
-    # Chart data is passed to the `dataSource` parameter, as dict, in the form of key-value pairs.
-    dataSource = {}
-    dataSource['chart'] = {
-        "caption": "Service Progress",
-        "subCaption": "XYZ Company",
-        "xAxisName": "Services",
-        "yAxisName": "No. of Clients",
-        "numberPrefix": "",
-        "theme": "fint",
-        "labelDisplay": "auto",
-    }
-
-    # The data for the chart should be in an array where each element of the array is a JSON object
-    # having the `label` and `value` as key value pair.
-
-    dataSource['data'] = []
-    # Iterate through the data in `Revenue` model and insert in to the `dataSource['data']` list.
-    for key in ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected')):
-        data = {}
-        print(key)
-        data['label'] = key['serviceSelected']
-        data['value'] = key['dcount']
-        dataSource['data'].append(data)
-
-    # Create an object for the Column 2D chart using the FusionCharts class constructor
-    column2D = FusionCharts("column2D", "ex1", "600", "350", "chart-1", "json", dataSource)
-    return render(request, 'spare.html', {'output': column2D.render()})
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -70,14 +45,20 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-
-
-
-
-
 def Dashboard(request):
 
-    u= User.objects.all().order_by('?')[:6]
+    def pdf_view(request):
+        fs = FileSystemStorage()
+        filename = 'Dashboard_SealDeal.pdf'
+        if fs.exists(filename):
+            with fs.open(filename) as pdf:
+                response = HttpResponse(pdf, content_type='application/pdf')
+                response['Content-Disposition'] = 'attachment; filename="Dashboard_SealDeal.pdf"'
+                return response
+        else:
+            return HttpResponseNotFound('The requested pdf was not found in our server.')
+
+    u = User.objects.all().order_by('?')[:6]
 
     dataSource = {}
     dataSource['chart'] = {
@@ -106,10 +87,12 @@ def Dashboard(request):
     column2D = FusionCharts("column3D", "ex1", "600", "350", "chart-1", "json", dataSource)
     pie2D = FusionCharts("pie3d", "ex2", "100%", "400", "chart-2", "json", dataSource)
 
+
     context = {
         'u': u,
         'output': column2D.render(),
         'output1': pie2D.render(),
+        'download': pdf_view
 
     }
     return render(request, 'dashboard.html', context)
