@@ -18,8 +18,8 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from ComplaintsForum.views import complaint_new
 from Services.views import sla_new,service_new
-from ChatBox.views import Login,Logout,Home,Post,Messages,register,privacy,activate
-from Dashboard.views import Dashboard, post_list
+from ChatBox.views import Login,Logout,Home,Post,Messages,register,privacy,activate,choosen_role
+from Dashboard.views import Dashboard, post_list,pdf_view
 from homepage.views import HomePage
 # from rest_framework import routers
 from Dashboard import views
@@ -43,6 +43,8 @@ urlpatterns = [
     url(r'^register/$', register , name='register'),
     url(r'^service_new/$', service_new , name='service_new'),
     url(r'^dashboard/$', Dashboard, name='dashboard'),
+    url(r'^pdf_view/$', pdf_view, name='pdf_view'),
+    
     url(r'^homepage/$', HomePage, name='homepage'),
     url(r'^dashboard_new/',include('Dashboard.urls'), name='dashboard_api'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),

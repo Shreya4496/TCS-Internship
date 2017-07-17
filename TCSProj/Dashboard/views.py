@@ -39,25 +39,28 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
 
-def Dashboard(request):
 
-    def pdf_view(request):
-        fs = FileSystemStorage()
-        filename = 'Dashboard_SealDeal.pdf'
-        if fs.exists(filename):
-            with fs.open(filename) as pdf:
-                response = HttpResponse(pdf, content_type='application/pdf')
-                response['Content-Disposition'] = 'attachment; filename="Dashboard_SealDeal.pdf"'
-                return response
-        else:
-            return HttpResponseNotFound('The requested pdf was not found in our server.')
+def pdf_view(request):
+    fs = FileSystemStorage()
+    filename = 'Dashboard_SealDeal.pdf'
+    if fs.exists(filename):
+        with fs.open(filename) as pdf:
+            response = HttpResponse(pdf, content_type='application/pdf')
+            response['Content-Disposition'] = 'attachment; filename="Dashboard_SealDeal.pdf"'
+            return response
+    else:
+        return HttpResponseNotFound('The requested pdf was not found in our server.')
+    return render(request, 'dashboard.html')
+
+
+def Dashboard(request):
 
     u = User.objects.all().order_by('?')[:6]
     query=request.GET.get("q")
     if query:
         u = u.filter(
-            Q(username__icontains=query)|
-            Q(email__icontains=query)
+            Q(username__iexact=query)|
+            Q(email__iexact=query)
             ).distinct()
 
     dataSource = {}

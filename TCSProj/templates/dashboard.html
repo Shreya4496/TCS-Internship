@@ -42,7 +42,6 @@
 <body>
 
 
-
     <div id="wrapper" style=" background-color: #021264">
 
 
@@ -56,6 +55,7 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a class="navbar-brand" href="{% url 'homepage' %}">Home</a>
+                   <a class="navbar-brand" href="{% url 'pdf_view' %}">Download pdf</a>
     </a>
 
             </div>
@@ -205,7 +205,7 @@
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search..." value="{{request.GET.q}}" name="q">
+                                <input type="text" class="form-control" placeholder="Search" value="{{request.GET.q}}" name="q">
                                 <span class="input-group-btn">
                                 <button class="btn btn-default" type="submit">
                                     <i class="fa fa-search"></i>
@@ -235,15 +235,17 @@
             <!-- /.navbar-static-side -->
         </nav>
 
+
         <div id="page-wrapper">
             <div class="row">
-                <button type="button" class="page-header pull-right btn btn-info" action="{{ download }}">Download pdf</button>
+                
                 <div class="col-lg-8">
                     <h1 class="page-header">Dashboard</h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
+
             <div class="row" style="display: flex; justify-content: space-between">
                 <div class="col-lg-3 col-md-6">
                     <div class="panel panel-primary">
@@ -415,6 +417,7 @@
 
 
 
+ 
 </body>
 
 </html>
