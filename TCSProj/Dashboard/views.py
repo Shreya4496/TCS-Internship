@@ -23,7 +23,7 @@ from Dashboard.fusioncharts import FusionCharts
 # return HttpResponse(json_data, mimetype='application/json')
 
 
-@login_required(login_url='/login/')
+@login_required(login_url='/login')
 
 def chart(request):
     # Chart data is passed to the `dataSource` parameter, as dict, in the form of key-value pairs.
@@ -103,7 +103,7 @@ def Dashboard(request):
         dataSource['data'].append(data)
 
     # Create an object for the Column 2D chart using the FusionCharts class constructor
-    column2D = FusionCharts("column2D", "ex1", "600", "350", "chart-1", "json", dataSource)
+    column2D = FusionCharts("column3D", "ex1", "600", "350", "chart-1", "json", dataSource)
     pie2D = FusionCharts("pie3d", "ex2", "100%", "400", "chart-2", "json", dataSource)
 
     context = {

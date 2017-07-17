@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect, render_to_response
 from .forms import SLAForm,ServiceSelect
 # from django.views.generic import View
 # from django.contrib import messages
+
 def service_new(request):
     if request.method == "POST":
         form = ServiceSelect(request.POST)

@@ -195,8 +195,8 @@ def Login(request):
 """
 def Logout(request):
     logout(request)
-    return render(request, "homepage.html")
-    #return HttpResponseRedirect('/login/')
+  #  return render(request, "homepage.html")
+    return HttpResponseRedirect('/homepage/')
 
 def Home(request):
     c = Chat.objects.all()
