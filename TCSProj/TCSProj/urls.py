@@ -19,7 +19,7 @@ from django.contrib import admin
 from ComplaintsForum.views import complaint_new
 from Services.views import sla_new,service_new
 from ChatBox.views import Login,Logout,Home,Post,Messages,register,privacy,activate,choosen_role
-from Dashboard.views import Dashboard, post_list,pdf_view
+from Dashboard.views import Dashboard, post_list,pdf_view, DashboardCust, service_list, my_service_client
 from homepage.views import HomePage
 # from rest_framework import routers
 from Dashboard import views
@@ -43,8 +43,8 @@ urlpatterns = [
     url(r'^register/$', register , name='register'),
     url(r'^service_new/$', service_new , name='service_new'),
     url(r'^dashboard/$', Dashboard, name='dashboard'),
+    url(r'^dashboardCust/$', DashboardCust, name='dashboardCust'),
     url(r'^pdf_view/$', pdf_view, name='pdf_view'),
-    
     url(r'^homepage/$', HomePage, name='homepage'),
     url(r'^dashboard_new/',include('Dashboard.urls'), name='dashboard_api'),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
@@ -53,6 +53,9 @@ urlpatterns = [
     url(r'^register_activate/activation/$',activate, name='activation'),
     url(r'^todo/$', TemplateView.as_view(template_name='todo.html'), name='todo'),
     url(r'^spare/$', post_list, name='spare'),
+    url(r'^spare1/$', service_list, name='provider'),
+    url(r'^spare/$', my_service_client, name='client'),
+
     # url(r'^spare/$', Dashboard.views.json_search, name="search")
 ]
 

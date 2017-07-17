@@ -16,19 +16,22 @@ body{
 
 </style><div class="container">
         <div class="page-header">
-            <h2> <a href="{% url 'dashboard' %}" class="top-menu"><span class="glyphicon glyphicon-home"> Dashboard</span></a>
+            <h2> <a href="{% url 'dashboardCust' %}" class="top-menu"><span class="glyphicon glyphicon-home"> Dashboard</span></a>
            </h2>
         </div>
-  <h2>Your Client Statistics</h2>
+  <h2>Service Offered</h2>
   <!--<p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>-->
   <div class="table-responsive table-bordered table-stripped">
   <table class="table">
     <thead>
       <tr>
         <!--<th>#</th>-->
-        <th style="text-align: center">Client Name</th>
-        <th style="text-align: center">Service</th>
-        <th style="text-align: center">Download SLA</th>
+        <th style="text-align: center">Service Name</th>
+        <th style="text-align: center">Minimum Duration</th>
+        <th style="text-align: center">Offering Company</th>
+        <th style="text-align: center">Service Objective</th>
+        <th style="text-align: center">Service Description</th>
+
       </tr>
     </thead>
     <tbody>
@@ -36,9 +39,12 @@ body{
 
       <tr style="text-align: center">
           <!--{ print( post ) }-->
-          <td>{{ post.client_name }}</td>
-          <td>{{ post.serviceSelected.service_name }}</td>
-          <td><a href="">SLA</a> </td>
+          <td>{{ post.service_name }}</td>
+          <td>{{ post.min_duration }}</td>
+          <td>{{ post.offering_company }}</td>
+          <td>{{ post.service_objective }}</td>
+          <td>{{ post.service_description }}</td>
+
     </tr>
     {% endfor %}
     </tbody>

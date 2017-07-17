@@ -12,17 +12,28 @@ from django.shortcuts import render
 from Dashboard.fusioncharts import FusionCharts
 from django.core.files.storage import FileSystemStorage
 from django.http import HttpResponse, HttpResponseNotFound
-# from django.shortcuts import render
-# json_data = serializers.serialize('json', data)
-# return HttpResponse(json_data, mimetype='application/json')
 from ComplaintsForum.models import *
 from reportlab.pdfgen import canvas
+# from django.contrib.formtools.preview import FormPreview
+# from django.http import HttpResponseRedirect
+# from myapp.models import SomeModel
 
 @login_required(login_url='/login')
 
 def post_list(request):
-    posts = ServiceSelected.objects.values('serviceSelected').annotate(dcount=Count('serviceSelected'))
+    posts = ServiceSelected.objects.all()
+    print (posts)
     return render(request, "spare.html", {'posts': posts})
+
+def my_service_client(request):
+
+    print (posts)
+    return render(request, "dashboard_cust.html", {'posts': posts})
+
+def service_list(request):
+    posts = Service.objects.all()
+    print (posts)
+    return render(request, "spare1.html", {'posts': posts})
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -61,6 +72,13 @@ def pdf_view(request):
     p.showPage()
     p.save()
     return response
+
+def DashboardCust(request):
+    posts = ServiceSelected.objects.all()
+    context = {
+        'posts' : posts
+    }
+    return render(request, 'dashboard_cust.html', context)
 
 def Dashboard(request):
 
