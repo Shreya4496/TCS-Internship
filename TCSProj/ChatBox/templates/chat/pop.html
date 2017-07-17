@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style>
+input[type=text] {
+    width: 80%;
+    /*padding: 12px 20px;*/
+    border: 1px solid black;
+}
+
+body{
+    background: url("https://buidln.clipdealer.com/002/451/248//previews/1--2451248-blue%20puzzle%20in%20conceptual%20form%20for%20your%20text%20or%20background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+h2{
+color:yellow
+}
+
+
+</style>
+</head>
+<body>
+
+<div class="container">
+  <h2><b><i>Welcome to SEALDEAL.com! Enjoy working!!</i></b></h2>
+  <!-- Trigger the modal with a button -->
+  <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Proceed to my dashboard</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"><b><i>You want to login as</i></b></h4>
+        </div>
+        <div class="modal-body">
+
+				<center><button type="submit"class="btn btn-warning btn-responsive"><a href="{% url 'dashboardCust' %}">Proceed as Client</a></button></center><br>
+            	<center><button type="submit"class="btn btn-warning btn-responsive"><a href="{% url 'dashboard' %}">Proceed as Service provider</a></button></center>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

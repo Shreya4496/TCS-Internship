@@ -28,7 +28,7 @@ def Login(request):
             if user.is_active:
                 login(request, user)
                 Chat.objects.all().delete()
-                return redirect( '/dashboard/', context)
+                return render(request, 'chat/pop.html')
             else:
                 return render(request, 'chat/login.html', {'error_message': 'Your account has been disabled'})
         else:
