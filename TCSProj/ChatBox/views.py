@@ -28,7 +28,7 @@ def Login(request):
             if user.is_active:
                 login(request, user)
                 Chat.objects.all().delete()
-                return render(request, 'dashboard.html', context)
+                return redirect( '/dashboard/', context)
             else:
                 return render(request, 'chat/login.html', {'error_message': 'Your account has been disabled'})
         else:
@@ -51,7 +51,7 @@ def privacy(request):
         return render(request,'privacy_settings.html',context)
 
 
-
+"""
 def search(request):
     u = User.objects.all()
     query=request.GET.get("q")
@@ -62,7 +62,7 @@ def search(request):
             ).distinct()
     return render(request, 'dashboard.html', {'u': u})
 
-
+"""
 
 
 

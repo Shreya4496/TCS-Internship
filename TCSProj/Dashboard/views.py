@@ -53,6 +53,12 @@ def Dashboard(request):
             return HttpResponseNotFound('The requested pdf was not found in our server.')
 
     u = User.objects.all().order_by('?')[:6]
+    query=request.GET.get("q")
+    if query:
+        u = u.filter(
+            Q(username__icontains=query)|
+            Q(email__icontains=query)
+            ).distinct()
 
     dataSource = {}
     dataSource['chart'] = {
