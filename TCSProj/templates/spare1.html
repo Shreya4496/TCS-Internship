@@ -1,10 +1,11 @@
-
+{% load staticfiles %}
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="{% static 'css/table.css' %}" rel="stylesheet">
 </head>
 <body>
    <style>
@@ -19,36 +20,41 @@ body{
             <h2> <a href="{% url 'dashboardCust' %}" class="top-menu"><span class="glyphicon glyphicon-home"> Dashboard</span></a>
            </h2>
         </div>
-  <h2>Service Offered</h2>
-  <!--<p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>-->
-  <div class="table-responsive table-bordered table-stripped">
-  <table class="table">
-    <thead>
-      <tr>
-        <!--<th>#</th>-->
-        <th style="text-align: center">Service Name</th>
-        <th style="text-align: center">Minimum Duration</th>
-        <th style="text-align: center">Offering Company</th>
-        <th style="text-align: center">Service Objective</th>
-        <th style="text-align: center">Service Description</th>
 
-      </tr>
-    </thead>
-    <tbody>
+        <div class="table-title">
+<h2>Service Offered</h2>
+</div>
+<table class="table-fill">
+<thead>
+<tr>
+ <th class="text-left">Service Name</th>
+        <th class="text-left">Minimum Duration</th>
+        <th class="text-left">Offering Company</th>
+        <th class="text-left">Service Objective</th>
+        <th class="text-left">Service Description</th>
+        <th class="text-left">SLA</th>
+</tr>
+
+</thead>
+     <tbody class="table-hover">
     {% for post in posts %}
 
-      <tr style="text-align: center">
+       <tr style="text-align: center">
           <!--{ print( post ) }-->
           <td>{{ post.service_name }}</td>
           <td>{{ post.min_duration }}</td>
           <td>{{ post.offering_company }}</td>
           <td>{{ post.service_objective }}</td>
           <td>{{ post.service_description }}</td>
-          <td><a href="{% url 'sla_new' %}">Procees to Sla</a></td>
+           <td><a href="{% url 'sla_new' %}"style="width:20px"><b>Proceed to SLA</b></a></td>
     </tr>
     {% endfor %}
     </tbody>
   </table>
+
+  <!--<p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>-->
+
+
   </div>
 </div>
 
