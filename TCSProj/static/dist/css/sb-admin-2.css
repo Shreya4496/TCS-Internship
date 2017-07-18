@@ -83,12 +83,14 @@ body {
 }
 .sidebar .arrow {
   float: right;
+  /*padding-left: 4cm;*/
+  border:none;
 }
 .sidebar .fa.arrow:before {
-  content: "\f104";
+  content: "\f060";
 }
 .sidebar .active > a > .fa.arrow:before {
-  content: "\f107";
+  content: "\f063 ";
 }
 .sidebar .nav-second-level li,
 .sidebar .nav-third-level li {
