@@ -16,7 +16,7 @@
     <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
     <link href="{% static 'css/new.css' %}" rel="stylesheet">
     <link href="{% static 'css/cal.css' %}" rel="stylesheet">
-
+    <link href="{% static 'css/table.css' %}" rel="stylesheet">
     <!-- MetisMenu CSS -->
     <link href="{% static 'vendor/metisMenu/metisMenu.min.css' %}" rel="stylesheet">
 
@@ -317,19 +317,20 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-4">
+                <div class="col-lg-6">
                     <h2>Your Services</h2>
   <!--<p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>-->
-  <div class="table table-responsive table-bordered">
-  <table class="table">
-    <thead>
-      <tr>
-        <!--<th>#</th>-->
-        <th style="text-align: center">Service</th>
-        <th style="text-align: center">Offering Company</th>
-      </tr>
-    </thead>
-    <tbody>
+  <div>
+      <table class="table-fill">
+<thead>
+<tr>
+
+<th class="text-left">Service</th>
+<th class="text-left">Offering Company</th>
+</tr>
+
+</thead>
+     <tbody class="table-hover">
     {% for post in posts %}
 
       <tr style="text-align: center">
@@ -340,9 +341,10 @@
     {% endfor %}
     </tbody>
   </table>
+
   </div>
                 </div>
-    <div class="col-lg-8">
+    <div class="col-lg-6">
         <div class="panel panel-default">
                         <div class="panel-heading">
                             <i class="fa fa-calendar fa-fw"></i> Calendar
