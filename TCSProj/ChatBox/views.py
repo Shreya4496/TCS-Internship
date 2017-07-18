@@ -87,10 +87,9 @@ def register(request):
             #if user.is_active:
                 #login(request, user)
             q=1
-            return render(request,'chat/after_reg.html',{'q': q})
-                #return render(request,'chat/home.html', {'q': q})
-        #return render(request,'chat/home.html', {'q': q})
-        return render(request,'chat/after_reg.html',{'q': q})
+            return render(request,'homepage.html',{'q': q})
+            #return render(request,'chat/after_reg.html',{'q': q})
+        return render(request,'homepage.html',{'q': q})
 
 
     context ={

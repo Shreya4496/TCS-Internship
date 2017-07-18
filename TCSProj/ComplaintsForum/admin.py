@@ -10,6 +10,7 @@ admin.site.register(SLA)
 admin.site.register(Chat)
 admin.site.register(Provider)
 admin.site.register(ServiceSelected)
+admin.site.register(Employee)
 
 
 # Register your models here.
