@@ -53,8 +53,8 @@ urlpatterns = [
     url(r'^register_activate/activation/$',activate, name='activation'),
     url(r'^todo/$', TemplateView.as_view(template_name='todo.html'), name='todo'),
     url(r'^spare/$', post_list, name='spare'),
-    url(r'^spare1/$', service_list, name='provider'),
-    url(r'^spare/$', my_service_client, name='client'),
+    url(r'^spare_list/$', service_list, name='provider'),
+    url(r'^spare1/$', my_service_client, name='client'),
     url(r'^service_create/$', service_create, name='service_create'),
 url(r'^service_all/$', service_all, name='service_all'),
     # url(r'^spare/$', Dashboard.views.json_search, name="search")

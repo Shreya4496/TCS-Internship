@@ -247,6 +247,7 @@
 .event span {
   display: inline-block;
   padding: 0 0 0 7px;
+  /*color: white;*/
 }
 
 .legend {
@@ -256,7 +257,7 @@
   height: 30px;
   background: rgba(60, 60, 60, 1);
   line-height: 30px;
-
+  color: white;
 }
 
 .entry {
@@ -266,6 +267,7 @@
   display: inline-block;
   line-height: 30px;
   background: transparent;
+  color: white;
 }
 
 .entry:after {
@@ -275,12 +277,13 @@
   width: 5px;
   top: 12px;
   left: 14px;
+  color: white;
 }
 
-.entry.blue:after { background: rgba(156, 202, 235, 1); }
-.entry.orange:after { background: rgba(247, 167, 0, 1); }
-.entry.green:after { background: rgba(153, 198, 109, 1); }
-.entry.yellow:after { background: rgba(249, 233, 0, 1); }
+.entry.blue:after { background: rgba(156, 202, 235, 1); color: white}
+.entry.orange:after { background: rgba(247, 167, 0, 1); color: white}
+.entry.green:after { background: rgba(153, 198, 109, 1); color: white}
+.entry.yellow:after { background: rgba(249, 233, 0, 1); color: white}
 
 /* Animations are cool!  */
 @-webkit-keyframes moveFromTopFade {

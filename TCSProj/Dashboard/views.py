@@ -20,21 +20,23 @@ from reportlab.pdfgen import canvas
 
 @login_required(login_url='/login')
 
-def post_list(request):
-    posts = ServiceSelected.objects.all()
-    print (posts)
-    return render(request, "spare.html", {'posts': posts})
 
 def my_service_client(request):
 
-    print (posts)
-    return render(request, "dashboard_cust.html", {'posts': posts})
+    read = Service.objects.all()
+    # print (posts)
+    return render(request, "spare1.html", {'posts': read})
 
 
 def service_list(request):
     posts = Service.objects.all()
     print (posts)
     return render(request, "spare1.html", {'posts': posts})
+
+def post_list(request):
+    posts = ServiceSelected.objects.all()
+    print (posts)
+    return render(request, "spare.html", {'posts': posts})
 
 
 class UserViewSet(viewsets.ModelViewSet):

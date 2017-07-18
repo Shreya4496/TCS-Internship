@@ -5,7 +5,10 @@
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
         <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+        <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}">-->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+
         <style>
 body{
     background: url("https://buidln.clipdealer.com/002/451/248//previews/1--2451248-blue%20puzzle%20in%20conceptual%20form%20for%20your%20text%20or%20background.jpg");
@@ -30,7 +33,7 @@ body{
            </h2>
         </div>
 
-        <div style="margin: 50px 100px 100px 100px" class="content container"><font face="BedRock" size="4">
+        <div style="margin: 50px 100px 100px 100px" class="content container"><font face="Lobster" size="4">
             <div class="row" style="margin: 50px 10px 10px 10px">
 
                 <div class="col-md-8">
@@ -41,5 +44,25 @@ body{
 
             </div></font>
         </div>
+    <!--<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>-->
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            var targetItem = $("#id_target_audience");
+            var serviceItem = $("#id_service_date");
+
+            function setContent(values) {
+                $('#preview_content').text(values);
+            }
+            setContent(targetItem.value)
+            targetItem.keyup(function () {
+                var newContent = $(this).val()
+                setContent(newContent);
+            })
+//  $("#preview_title").text();
+//            console.log();
+
+        });
+    </script>
     </body>
 </html>
