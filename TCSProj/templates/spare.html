@@ -1,3 +1,4 @@
+{% load staticfiles %}
 
 <html>
 <head>
@@ -5,6 +6,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link href="{% static 'css/table.css' %}" rel="stylesheet">
 </head>
 <body>
    <style>
@@ -19,31 +21,37 @@ body{
             <h2> <a href="{% url 'dashboard' %}" class="top-menu"><span class="glyphicon glyphicon-home"> Dashboard</span></a>
            </h2>
         </div>
-  <h2>Your Client Statistics</h2>
-  <!--<p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>-->
-  <div class="table-responsive table-bordered table-stripped">
-  <table class="table">
-    <thead>
-      <tr>
-        <!--<th>#</th>-->
-        <th style="text-align: center">Client Name</th>
-        <th style="text-align: center">Service</th>
-        <th style="text-align: center">Download SLA</th>
-      </tr>
-    </thead>
-    <tbody>
+
+       <div class="table-title">
+<h2>Your Client Statistics</h2>
+</div>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Client Name</th>
+<th class="text-left">Service</th>
+<th class="text-left">Download SLA</th>
+</tr>
+
+</thead>
+     <tbody class="table-hover">
     {% for post in posts %}
 
       <tr style="text-align: center">
           <!--{ print( post ) }-->
-          <td>{{ post.client_name }}</td>
-          <td>{{ post.serviceSelected.service_name }}</td>
-          <td><a href="">SLA</a> </td>
+          <td class="text-left">{{ post.client_name }}</td>
+          <td class="text-left">{{ post.serviceSelected.service_name }}</td>
+          <td class="text-left"><a href=""><b><u>SLA</u></b></a> </td>
     </tr>
     {% endfor %}
     </tbody>
   </table>
-  </div>
+
+</tbody>
+</table>
+  <!--<p>The .table-responsive class creates a responsive table which will scroll horizontally on small devices (under 768px). When viewing on anything larger than 768px wide, there is no difference:</p>-->
+
+
 </div>
 
 </body>
