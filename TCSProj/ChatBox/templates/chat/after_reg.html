@@ -1,4 +1,4 @@
-{% extends 'base.html' %}
+{% extends 'base_login.html' %}
 {%load staticfiles %}
 {%block afterRegister%}
 <head>
@@ -17,37 +17,9 @@
     </style>
 </head>
 
-{%comment%}
- <input type="radio" name="chooseone" value="P" onclick="func({{ob1.lock__lock_id}})" ><label for="Prime"> </label> {{ob1.day2}}
- {%endcomment%}
-
 
 {%if q%}
-<center><p style = "font-family: Arial; color: Red;"> <font size="4">You have been successfully registered. Please select your role in the SealDeal and activate the link on your email id.</font> </p></center>
+<center><p style = "font-family: Arial; color: Red;"> <font size="4">To successfully register activate the link on your email id.</font> </p></center>
 {%endif%}
-
-
-
-<div id="outer">
-	<div id="container">
-	    <center><h3>Choose Your role</h3></center>
-	    <br>
-
-
-
-
-
-  <form method="POST" class="form-horizontal" role="form" action="" enctype="multipart/form-data">
-		<p>
-		<label>	<input type="radio" name="role" value="provider" style="vertical-align: middle;margin: 0px;" />&nbsp;&nbsp; Service Provider<br>
-		</label>
-		<label>	<input type="radio" name="role" value="client" checked style="vertical-align: middle;margin: 0px;"/>&nbsp;&nbsp;Customer<br>
-		</label>
-			</p>
-				<center><button type="submit" class="btn btn-danger"><a href = "https://mail.google.com/">Proceed</a></button></center>
-	    </form>
-
-	    	</div>
-</div>
 
 {%endblock%}
