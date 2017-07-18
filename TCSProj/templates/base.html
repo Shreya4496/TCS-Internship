@@ -4,7 +4,7 @@
 
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
-        <link href='//fonts.googleapis.com/css?family=Lobster&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+  
         <!--<link rel="stylesheet" href="{% static 'css/blog.css' %}">-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
@@ -47,23 +47,5 @@ body{
         </div>
     <!--<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>-->
 
-    <script type="text/javascript">
-        $(document).ready(function() {
-            var targetItem = $("#id_target_audience");
-            var serviceItem = $("#id_service_date");
-
-            function setContent(values) {
-                $('#preview_content').text(values);
-            }
-            setContent(targetItem.value)
-            targetItem.keyup(function () {
-                var newContent = $(this).val()
-                setContent(newContent);
-            })
-//  $("#preview_title").text();
-//            console.log();
-
-        });
-    </script>
     </body>
 </html>
