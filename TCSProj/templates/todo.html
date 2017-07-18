@@ -1,4 +1,6 @@
+
 {% load staticfiles %}
+
 <html>
 <head>
 <meta charset="utf-8">
@@ -11,9 +13,23 @@
 <link href="{% static 'css/todo.css' %}" rel="stylesheet">
 <!-- <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script> -->
 <!-- <script src="{% static 'js/todo.js' %}"></script> -->
+
+        <style>
+body{
+    background: url("https://buidln.clipdealer.com/002/451/248//previews/1--2451248-blue%20puzzle%20in%20conceptual%20form%20for%20your%20text%20or%20background.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+
+}
+
+</style>
 </head>
 
 <body>
+<div class="page-header">
+            <h2> <a href="{% url 'dashboard' %}" class="top-menu"><span class="glyphicon glyphicon-home"> Dashboard</span></a>
+           </h2>
+        </div>
 <div class="container">
     <div class="row">
         <div class="col-md-6">
