@@ -28,6 +28,8 @@ from Dashboard import views
 # router.register(r'users', views.UserViewSet)
 # router.register(r'groups', views.GroupViewSet)
 from django.views.generic import TemplateView
+from django.contrib.auth import authenticate
+from django.contrib.auth.views import logout, login, password_reset, password_reset_done,password_reset_confirm,password_reset_complete
 
 urlpatterns = [
     # url(r'^', include(router.urls)),
@@ -56,7 +58,13 @@ urlpatterns = [
     url(r'^spare_list/$', service_list, name='provider'),
     url(r'^spare1/$', my_service_client, name='client'),
     url(r'^service_create/$', service_create, name='service_create'),
-url(r'^service_all/$', service_all, name='service_all'),
+    url(r'^service_all/$', service_all, name='service_all'),
+
+    url(r'^reset-password/$',password_reset, name='reset_password'),
+    url(r'^reset-password/done/$',password_reset_done, name='password_reset_done'),
+    url(r'^reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+        password_reset_confirm, name='password_reset_confirm'),
+    url(r'^reset-password/complete/$', password_reset_complete,name='password_reset_complete')
     # url(r'^spare/$', Dashboard.views.json_search, name="search")
 ]
 

@@ -98,6 +98,8 @@ def register(request):
         "form": form,
     }
     return render(request, 'chat/registration_form.html', context)
+
+
 def send_email(toaddr,id):
 	text = "Hi!\nHow are you?\nHere is the link to activate your account:\nhttp://127.0.0.1:8000/register_activate/activation/?id=%s" %(id)
 	# Record the MIME types of both parts - text/plain and text/html.

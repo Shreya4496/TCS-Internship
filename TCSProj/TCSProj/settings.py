@@ -146,3 +146,11 @@ REST_FRAMEWORK = {
     ],
     'PAGE_SIZE': 10
 }
+
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'sealdeal16@gmail.com'
+EMAIL_HOST_PASSWORD = 'tcsproject'
+DEFAULT_FROM_EMAIL = 'sealdeal16@gmail.com'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
