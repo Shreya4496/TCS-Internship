@@ -11,6 +11,7 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from django.shortcuts import get_object_or_404
 from ComplaintsForum.models import Chat
+from django.contrib.auth import update_session_auth_hash
 
 
 
@@ -41,8 +42,9 @@ def privacy(request):
         form = PasswordChangeForm(data=request.POST, user=request.user)
         if form.is_valid():
             form.save()
-            return render(request,'dashboard.html')
-        return render(request,'dashboard.html')
+            update_session_auth_hash(request, form.user)  #so that user remains logged in even after password change
+            return HttpResponseRedirect('/homepage/')
+        return HttpResponseRedirect('/privacysettings/')
     else :
         form = PasswordChangeForm(user=request.user)
         context ={
