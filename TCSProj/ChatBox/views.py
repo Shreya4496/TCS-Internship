@@ -10,13 +10,14 @@ import smtplib
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from django.shortcuts import get_object_or_404
-from ComplaintsForum.models import Chat
+from ComplaintsForum.models import Chat, Employee
 from django.contrib.auth import update_session_auth_hash
 
 
 
 def user_profile(request):
-    return render(request,'user_profile.html')
+    company=Employee.company
+    return render(request,'user_profile.html',{'company': company})
 
 
 def Login(request):

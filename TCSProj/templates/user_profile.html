@@ -11,8 +11,9 @@
         <table>&nbsp;&nbsp;&nbsp;&nbsp;
        <tr> <p>Username: {{ user.username }}</p></tr>
       <tr><p>Email: {{ user.email }}</p></tr>
-    {%comment%}
+
     <p>Company: {{ company }}</p>
+    {%comment%}
     {%if user.customer == True%}
      <p>A Customer</p>
     {%endif%}
