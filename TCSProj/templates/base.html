@@ -32,14 +32,15 @@ body{
 {%endblock%}
  {%block afterRegister%}
  {%endblock%}
- 
+
  {%block settings%}
   {%endblock%}
         <div class="page-header">
             <h2> <a href="{% url 'dashboard' %}" class="top-menu"><span class="glyphicon glyphicon-home"> Dashboard</span></a>
            </h2>
         </div>
-
+{% block profile %}
+  {%endblock%}
         <div style="margin: 50px 100px 100px 100px" class="content container"><font face="Lobster" size="4">
             <div class="row" style="margin: 50px 10px 10px 10px">
 

@@ -15,6 +15,10 @@ from django.contrib.auth import update_session_auth_hash
 
 
 
+def user_profile(request):
+    return render(request,'user_profile.html')
+
+
 def Login(request):
     if request.method == "POST":
         username = request.POST['username']

@@ -18,7 +18,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from ComplaintsForum.views import complaint_new
 from Services.views import sla_new,service_new,service_create,service_all
-from ChatBox.views import Login,Logout,Home,Post,Messages,register,privacy,activate,choosen_role
+from ChatBox.views import Login,Logout,Home,Post,Messages,register,privacy,activate,choosen_role,user_profile
 from Dashboard.views import Dashboard, post_list,pdf_view, DashboardCust, service_list, my_service_client
 from homepage.views import HomePage
 # from rest_framework import routers
@@ -59,6 +59,7 @@ urlpatterns = [
     url(r'^spare1/$', my_service_client, name='client'),
     url(r'^service_create/$', service_create, name='service_create'),
     url(r'^service_all/$', service_all, name='service_all'),
+    url(r'^user_profile/$', user_profile, name='user_profile'),
 
     url(r'^reset-password/$',password_reset, name='reset_password'),
     url(r'^reset-password/done/$',password_reset_done, name='password_reset_done'),
