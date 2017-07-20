@@ -117,7 +117,7 @@ def Dashboard(request):
         dataSource['data'].append(data)
 
     # Create an object for the Column 2D chart using the FusionCharts class constructor
-    column2D = FusionCharts("column3D", "ex1", "600", "350", "chart-1", "json", dataSource)
+    column2D = FusionCharts("column3D", "ex1", "100%", "50%", "chart-1", "json", dataSource)
     pie2D = FusionCharts("pie3d", "ex2", "100%", "400", "chart-2", "json", dataSource)
 
 
