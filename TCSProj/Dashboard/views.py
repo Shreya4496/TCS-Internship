@@ -86,7 +86,7 @@ def pdf_view(request):
     response = HttpResponse(content_type='application/pdf')
     response['Content-Disposition'] = 'attachment; filename="SealDeal.pdf"'
     p = canvas.Canvas(response)
-    p.drawString(25, 800,"Hey %s welcome to SealDeal. Further transactions will be forwarded to %s."%( request.user.username,request.user.email))
+    p.drawString(25, 700,"Hey %s welcome to SealDeal. Further transactions will be forwarded to %s."%( request.user.username,request.user.email))
     p.showPage()
     p.save()
     return response
