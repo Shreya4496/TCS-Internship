@@ -67,11 +67,26 @@ def pdf_view(request):
         return HttpResponseNotFound('The requested pdf was not found in our server.')
     return render(request, 'dashboard.html')
 """
+import os
+from django.template import Context
+from django import template
+from django.template.loader import get_template
+def pdf_vieww(request):
+    template = get_template("dashboard.html")
+    context = Context({"data": report_data})
+    html  = template.render(context)
+    result = StringIO.StringIO()
+    pdf = pisa.pisaDocument(StringIO.StringIO(html.encode("UTF-8")), result)
+    if not pdf.err:
+        return HttpResponse(result.getvalue(), mimetype='application/pdf')
+
 def pdf_view(request):
+    #path = os.expanduser('~/D:/pdf/')
+    #f = open(path+TCS, "r")
     response = HttpResponse(content_type='application/pdf')
-    response['Content-Disposition'] = 'attachment; filename="somefilename.pdf"'
+    response['Content-Disposition'] = 'attachment; filename="SealDeal.pdf"'
     p = canvas.Canvas(response)
-    p.drawString(100, 100, "CONTENT TO BE ADDED HERE")
+    p.drawString(25, 800,"Hey %s welcome to SealDeal. Further transactions will be forwarded to %s."%( request.user.username,request.user.email))
     p.showPage()
     p.save()
     return response
